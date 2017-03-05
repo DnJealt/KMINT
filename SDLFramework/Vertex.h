@@ -14,13 +14,16 @@ private:
 	int cost;
 
 	std::vector<Edge*> edges;
-	Vertex* previous;
+	Vertex* previous{ nullptr };
 
 public:
 
 	Vertex();
 	Vertex(int xPos, int yPos);
 	~Vertex();
+
+	int getX() const;
+	int getY() const;
 
 	void setPrevious(Vertex* v);
 	Vertex* getPrevious() const;

@@ -12,6 +12,14 @@ Vertex::~Vertex() {
 	edges.clear();
 }
 
+int Vertex::getX() const {
+	return this->xPos;
+}
+int Vertex::getY() const {
+	return this->yPos;
+}
+
+
 Vertex* Vertex::getPrevious() const
 {
 	return this->previous;

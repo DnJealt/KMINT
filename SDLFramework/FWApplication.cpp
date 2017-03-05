@@ -296,6 +296,23 @@ void FWApplication::Quit()
 	mIsRunning = false;
 }
 
+void FWApplication::DrawGraph(Graph graph) {
+	SetColor(Color(0, 0, 255, 255));
+
+	// Draw dots
+	for(Vertex* v : graph.vertices) {
+		DrawCircle(v->getX(), v->getY(), 3, true);
+	}
+
+	// Black
+	SetColor(Color(0, 0, 0, 255));
+
+	// Draw Lines
+	for (Edge* e : graph.edges) {
+		DrawLine(e->from->getX(), e->from->getY(), e->to->getX(), e->to->getX());
+	}
+}
+
 
 //void FWApplication::AddOnEvent(std::function<void(SDL_Event*)> func)
 //{

@@ -4,6 +4,8 @@
 #include <cstdint>
 #include <vector>
 
+#include "Graph.h"
+
 class IGameObject;
 struct SDL_Renderer;
 struct SDL_Window;
@@ -242,6 +244,9 @@ public:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	void RenderGameObjects();
 	void Quit();
+
+	void DrawGraph(Graph graph);
+
 	//void AddOnEvent(std::function<void(SDL_Event*)> func);
 
 private:

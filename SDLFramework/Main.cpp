@@ -6,12 +6,15 @@
 #include <time.h>
 
 #include "ExampleGameObject.h"
+#include "Rift.h"
 
 
 int main(int args[])
 {
 	// Seed the RNG
 	srand(time(NULL));
+	Rift r;
+	Graph g = r.getGraph();
 
 	//auto window = Window::CreateSDLWindow();
 	auto application = new FWApplication();
@@ -24,9 +27,9 @@ int main(int args[])
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
 
-	// Dancing cow
-	ExampleGameObject *example = new ExampleGameObject();
-	application->AddRenderable(example);
+	//// Dancing cow
+	//ExampleGameObject *example = new ExampleGameObject();
+	//application->AddRenderable(example);
 
 	//while (true){}
 	while (application->IsRunning())
@@ -50,22 +53,24 @@ int main(int args[])
 			}
 		}
 		
-		// This is example code, replace with your own!
+		//// This is example code, replace with your own!
 
-		// Text drawing
-		application->SetColor(Color(0, 0, 0, 255));
-		application->DrawText("Welcome to KMint", 400, 300);
-		
-		// Graph drawing
-		application->SetColor(Color(0, 0, 0, 255));
-		application->DrawLine(400, 350, 350, 400);
-		application->DrawLine(350, 400, 450, 400);
-		application->DrawLine(450, 400, 400, 350);
+		application->DrawGraph(g);
 
-		application->SetColor(Color(0, 0, 255, 255));
-		application->DrawCircle(400, 350, 10, true);
-		application->DrawCircle(350, 400, 10, true);
-		application->DrawCircle(450, 400, 10, true);
+		//// Text drawing
+		//application->SetColor(Color(0, 0, 0, 255));
+		//application->DrawText("Welcome to KMint", 400, 300);
+		//
+		//// Graph drawing
+		//application->SetColor(Color(0, 0, 0, 255));
+		//application->DrawLine(400, 350, 350, 400);
+		//application->DrawLine(350, 400, 450, 400);
+		//application->DrawLine(450, 400, 400, 350);
+
+		//application->SetColor(Color(0, 0, 255, 255));
+		//application->DrawCircle(400, 350, 10, true);
+		//application->DrawCircle(350, 400, 10, true);
+		//application->DrawCircle(450, 400, 10, true);
 
 		// For the background
 		application->SetColor(Color(255, 255, 255, 255));

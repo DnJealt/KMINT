@@ -7,3 +7,7 @@ Edge::Edge(Vertex* from, Vertex* to, const int weight)
 Edge::~Edge() {
 	delete from, to;
 }
+
+const int Edge::getWeight() const {
+	return this->weight;
+}
