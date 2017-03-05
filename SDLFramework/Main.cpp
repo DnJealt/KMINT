@@ -10,6 +10,9 @@
 
 int main(int args[])
 {
+	// Seed the RNG
+	srand(time(NULL));
+
 	//auto window = Window::CreateSDLWindow();
 	auto application = new FWApplication();
 	if (!application->GetWindow())

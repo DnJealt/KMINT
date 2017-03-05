@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="FWApplication.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ExampleGameObject.cpp" />
+    <ClCompile Include="Vertex.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Edge.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="FWApplication.h" />
+    <ClInclude Include="ExampleGameObject.h" />
+    <ClInclude Include="IGameObject.h" />
+    <ClInclude Include="Vertex.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Edge.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Rift.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SDL2.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Models">
+      <UniqueIdentifier>{c1819ce2-6cfc-4fe4-9953-1fd27b288f2b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
