@@ -207,11 +207,10 @@ public:
 protected:
 	FWApplication * mApplication;
 	SDL_Texture * mTexture;
-	
+	Vertex* node;
 	uint32_t mX, mY;
 	uint32_t mWidth, mHeight;
 	bool mIsActive;
-	//Color mColor;
 
 private:
 

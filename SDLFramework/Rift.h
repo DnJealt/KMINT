@@ -8,6 +8,15 @@ private:
 
 public:
 	Graph getGraph() { return graph; }
+	Vertex* pacmanStart;
+	Vertex* ghostStart1;
+	Vertex* ghostStart2;
+	Vertex* ghostStart3;
+	Vertex* ghostStart4;
+	Vertex* pillSpawn1;
+	Vertex* pillSpawn2;
+	Vertex* pillSpawn3;
+	Vertex* pillSpawn4;
 
 	Rift() {
 		auto vertex104 = new Vertex(34, 120);
@@ -126,25 +135,25 @@ public:
 		graph.addVertex(vertex163);
 		auto vertex224 = new Vertex(261, 456);
 		graph.addVertex(vertex224);
-		auto vertex243 = new Vertex(34, 82); // Powerpill
-		graph.addVertex(vertex243);
-		auto vertex244 = new Vertex(541, 80); // Powerpill
-		graph.addVertex(vertex244);
-		auto vertex245 = new Vertex(544, 456); // Powerpill
-		graph.addVertex(vertex245);
-		auto vertex246 = new Vertex(34, 456); // Powerpill
-		graph.addVertex(vertex246);
-		auto vertex103 = new Vertex(34, 48); // Spawn spookje
-		graph.addVertex(vertex103);
-		auto vertex114 = new Vertex(541, 45); // Spawn spookje
-		graph.addVertex(vertex114);
-		auto vertex157 = new Vertex(37, 562); // Spawn spookje
-		graph.addVertex(vertex157);
-		auto vertex162 = new Vertex(541, 568); // Spawn spookje
-		graph.addVertex(vertex162);
-		auto vertex250 = new Vertex(290, 345); // Spawn pacman
-		graph.addVertex(vertex250);
-		graph.addEdge(new Edge(vertex103, vertex106));
+		pillSpawn1 = new Vertex(34, 82); // Powerpill
+		graph.addVertex(pillSpawn1);
+		pillSpawn2 = new Vertex(541, 80); // Powerpill
+		graph.addVertex(pillSpawn2);
+		pillSpawn3 = new Vertex(544, 456); // Powerpill
+		graph.addVertex(pillSpawn3);
+		pillSpawn4 = new Vertex(34, 456); // Powerpill
+		graph.addVertex(pillSpawn4);
+		ghostStart1 = new Vertex(34, 48); // Spawn spookje
+		graph.addVertex(ghostStart1);
+		ghostStart2 = new Vertex(541, 45); // Spawn spookje
+		graph.addVertex(ghostStart2);
+		ghostStart3 = new Vertex(37, 562); // Spawn spookje
+		graph.addVertex(ghostStart3);
+		ghostStart4 = new Vertex(541, 568); // Spawn spookje
+		graph.addVertex(ghostStart4);
+		pacmanStart = new Vertex(290, 345); // Spawn pacman
+		graph.addVertex(pacmanStart);
+		graph.addEdge(new Edge(ghostStart1, vertex106));
 		graph.addEdge(new Edge(vertex106, vertex107));
 		graph.addEdge(new Edge(vertex107, vertex108));
 		graph.addEdge(new Edge(vertex108, vertex119));
@@ -160,7 +169,7 @@ public:
 		graph.addEdge(new Edge(vertex109, vertex110));
 		graph.addEdge(new Edge(vertex110, vertex111));
 		graph.addEdge(new Edge(vertex112, vertex111));
-		graph.addEdge(new Edge(vertex114, vertex111));
+		graph.addEdge(new Edge(ghostStart2, vertex111));
 		graph.addEdge(new Edge(vertex113, vertex112));
 		graph.addEdge(new Edge(vertex115, vertex113));
 		graph.addEdge(new Edge(vertex112, vertex116));
@@ -182,8 +191,8 @@ public:
 		graph.addEdge(new Edge(vertex147, vertex148));
 		graph.addEdge(new Edge(vertex149, vertex150));
 		graph.addEdge(new Edge(vertex150, vertex158));
-		graph.addEdge(new Edge(vertex158, vertex157));
-		graph.addEdge(new Edge(vertex157, vertex156));
+		graph.addEdge(new Edge(vertex158, ghostStart3));
+		graph.addEdge(new Edge(ghostStart3, vertex156));
 		graph.addEdge(new Edge(vertex156, vertex155));
 		graph.addEdge(new Edge(vertex155, vertex154));
 		graph.addEdge(new Edge(vertex154, vertex153));
@@ -194,8 +203,8 @@ public:
 		graph.addEdge(new Edge(vertex147, vertex146));
 		graph.addEdge(new Edge(vertex146, vertex133));
 		graph.addEdge(new Edge(vertex133, vertex132));
-		graph.addEdge(new Edge(vertex133, vertex250));
-		graph.addEdge(new Edge(vertex250, vertex134));
+		graph.addEdge(new Edge(vertex133, pacmanStart));
+		graph.addEdge(new Edge(pacmanStart, vertex134));
 		graph.addEdge(new Edge(vertex134, vertex127));
 		graph.addEdge(new Edge(vertex126, vertex135));
 		graph.addEdge(new Edge(vertex135, vertex136));
@@ -214,21 +223,21 @@ public:
 		graph.addEdge(new Edge(vertex139, vertex138));
 		graph.addEdge(new Edge(vertex138, vertex137));
 		graph.addEdge(new Edge(vertex138, vertex163));
-		graph.addEdge(new Edge(vertex163, vertex162));
-		graph.addEdge(new Edge(vertex162, vertex159));
+		graph.addEdge(new Edge(vertex163, ghostStart4));
+		graph.addEdge(new Edge(ghostStart4, vertex159));
 		graph.addEdge(new Edge(vertex159, vertex160));
 		graph.addEdge(new Edge(vertex160, vertex161));
 		graph.addEdge(new Edge(vertex161, vertex141));
 		graph.addEdge(new Edge(vertex159, vertex156));
 		graph.addEdge(new Edge(vertex105, vertex119));
 		graph.addEdge(new Edge(vertex118, vertex112));
-		graph.addEdge(new Edge(vertex103, vertex243));
-		graph.addEdge(new Edge(vertex243, vertex104));
-		graph.addEdge(new Edge(vertex114, vertex244));
-		graph.addEdge(new Edge(vertex244, vertex113));
-		graph.addEdge(new Edge(vertex148, vertex246));
-		graph.addEdge(new Edge(vertex246, vertex149));
-		graph.addEdge(new Edge(vertex136, vertex245));
-		graph.addEdge(new Edge(vertex245, vertex137));
+		graph.addEdge(new Edge(ghostStart1, pillSpawn1));
+		graph.addEdge(new Edge(pillSpawn1, vertex104));
+		graph.addEdge(new Edge(ghostStart2, pillSpawn2));
+		graph.addEdge(new Edge(pillSpawn2, vertex113));
+		graph.addEdge(new Edge(vertex148, pillSpawn4));
+		graph.addEdge(new Edge(pillSpawn4, vertex149));
+		graph.addEdge(new Edge(vertex136, pillSpawn3));
+		graph.addEdge(new Edge(pillSpawn3, vertex137));
 	}
 };

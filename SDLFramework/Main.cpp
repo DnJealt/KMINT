@@ -28,6 +28,9 @@ int main(int args[])
 	application->SetColor(Color(255, 10, 40, 255));
 
 	auto background = application->LoadTexture("background.png");
+	auto pacman = new Pacman(r.pacmanStart);
+	application->AddRenderable(pacman);
+	auto ghosts = new Ghost[100];
 
 	//// Dancing cow
 	//ExampleGameObject *example = new ExampleGameObject();
@@ -53,29 +56,14 @@ int main(int args[])
 					break;
 				}
 			}
-		}
-		
-		// For the background
+		}		
+
+		// DRAW FUNCTIONS
 
 		application->SetColor(Color(255, 255, 255, 255));
 		application->DrawTexture(background, 0, 0);
 
 		application->DrawGraph(r.getGraph());
-
-		//// Text drawing
-		//application->SetColor(Color(0, 0, 0, 255));
-		//application->DrawText("Welcome to KMint", 400, 300);
-		//
-		//// Graph drawing
-		//application->SetColor(Color(0, 0, 0, 255));
-		//application->DrawLine(400, 350, 350, 400);
-		//application->DrawLine(350, 400, 450, 400);
-		//application->DrawLine(450, 400, 400, 350);
-
-		//application->SetColor(Color(0, 0, 255, 255));
-		//application->DrawCircle(400, 350, 10, true);
-		//application->DrawCircle(350, 400, 10, true);
-		//application->DrawCircle(450, 400, 10, true);
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();
