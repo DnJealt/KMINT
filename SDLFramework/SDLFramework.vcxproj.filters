@@ -52,13 +52,10 @@
     <ClInclude Include="Pocketknife.h">
       <Filter>Models</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="DeadGhost.h">
       <Filter>Models\Objects</Filter>
-=======
     <ClInclude Include="AStar.h">
       <Filter>Models\Algorithm</Filter>
->>>>>>> 1139879b1c8bbe9847dbcc31fbf2675c32bff21e
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
