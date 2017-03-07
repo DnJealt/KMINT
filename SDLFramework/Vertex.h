@@ -25,6 +25,8 @@ public:
 	int getX() const;
 	int getY() const;
 
+	void addEdge(Edge* edge);
+
 	void setPrevious(Vertex* v);
 	Vertex* getPrevious() const;
 

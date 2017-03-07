@@ -19,6 +19,10 @@ int Vertex::getY() const {
 	return this->yPos;
 }
 
+void Vertex::addEdge(Edge* edge)
+{
+	this->edges.push_back(edge);
+}
 
 Vertex* Vertex::getPrevious() const
 {
