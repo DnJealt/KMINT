@@ -21,7 +21,7 @@ int Vertex::getY() const {
 
 void Vertex::addEdge(Edge* edge)
 {
-	this->edges.push_back(edge);
+	this->edges.emplace_back(edge);
 }
 
 Vertex* Vertex::getPrevious() const
