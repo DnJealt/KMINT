@@ -14,10 +14,9 @@ int main(int args[])
 	// Seed the RNG
 	srand(time(NULL));
 	Rift r;
-	Graph g = r.getGraph();
 
 	//auto window = Window::CreateSDLWindow();
-	auto application = new FWApplication();
+	auto application = new FWApplication(50,50,1200,600);
 	if (!application->GetWindow())
 	{
 		LOG("Couldn't create window...");
@@ -26,6 +25,8 @@ int main(int args[])
 	
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
+
+	auto background = application->LoadTexture("background.png");
 
 	//// Dancing cow
 	//ExampleGameObject *example = new ExampleGameObject();
@@ -53,9 +54,12 @@ int main(int args[])
 			}
 		}
 		
-		//// This is example code, replace with your own!
+		// For the background
 
-		application->DrawGraph(g);
+		application->SetColor(Color(255, 255, 255, 255));
+		application->DrawTexture(background, 0, 0);
+
+		application->DrawGraph(r.getGraph());
 
 		//// Text drawing
 		//application->SetColor(Color(0, 0, 0, 255));
@@ -71,9 +75,6 @@ int main(int args[])
 		//application->DrawCircle(400, 350, 10, true);
 		//application->DrawCircle(350, 400, 10, true);
 		//application->DrawCircle(450, 400, 10, true);
-
-		// For the background
-		application->SetColor(Color(255, 255, 255, 255));
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();

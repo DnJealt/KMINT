@@ -297,13 +297,6 @@ void FWApplication::Quit()
 }
 
 void FWApplication::DrawGraph(Graph graph) {
-	SetColor(Color(0, 0, 255, 255));
-
-	// Draw dots
-	for(Vertex* v : graph.vertices) {
-		DrawCircle(v->getX(), v->getY(), 3, true);
-	}
-
 	// Black
 	SetColor(Color(0, 0, 0, 255));
 
@@ -311,7 +304,7 @@ void FWApplication::DrawGraph(Graph graph) {
 	for (Edge* e : graph.edges) {
 		if (e->getWeight() == 1) {
 			// Blue
-			SetColor(Color(0, 0, 255, 255));
+			SetColor(Color(255, 255, 100, 255));
 		}
 			// Green
 		else if (e->getWeight() == 2) {
@@ -321,7 +314,14 @@ void FWApplication::DrawGraph(Graph graph) {
 			// Red
 			SetColor(Color(255, 0, 0, 255));
 		}
-		DrawLine(e->from->getX(), e->from->getY(), e->to->getX(), e->to->getX());
+		DrawLine(e->from->getX(), e->from->getY(), e->to->getX(), e->to->getY());
+	}
+
+	SetColor(Color(255, 255, 255, 255));
+
+	// Draw dots
+	for (Vertex* v : graph.vertices) {
+		DrawCircle(v->getX(), v->getY(), 4, true);
 	}
 }
 
