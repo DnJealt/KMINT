@@ -8,6 +8,8 @@ public:
 	~Pacman();
 	void Update(float deltaTime);
 
+	void OnCollision(IGameObject * collidedObject);
+
 	int hp;
 private:
 	SDL_Texture *texture;

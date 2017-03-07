@@ -6,6 +6,9 @@ Ghost::Ghost(Vertex* start) {
 	this->SetTexture(texture);
 	this->SetSize(30, 30);
 	this->node = start;
+	this->speed = 2;
+	this->mX = node->getX();
+	this->mY = node->getY();
 }
 
 Ghost::~Ghost() {
@@ -13,5 +16,5 @@ Ghost::~Ghost() {
 }
 
 void Ghost::Update(float deltaTime) {
-	this->SetOffset(this->node->getX(), this->node->getY());
+	this->Move();
 }

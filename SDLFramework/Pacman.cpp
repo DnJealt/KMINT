@@ -8,6 +8,9 @@ Pacman::Pacman(Vertex* node) {
 	this->SetSize(30, 30);
 	this->hp = 100;
 	this->node = node;
+	this->speed = 2;
+	this->mX = node->getX();
+	this->mY = node->getY();
 }
 
 Pacman::~Pacman() {
@@ -15,5 +18,12 @@ Pacman::~Pacman() {
 }
 
 void Pacman::Update(float deltaTime) {
-	this->SetOffset(this->node->getX(), this->node->getY());
+	this->Move();
+}
+
+void Pacman::OnCollision(IGameObject* collidedObject) {
+	if (collidedObject != nullptr && collidedObject->IsActive()) {
+		collidedObject->SetActive(false);
+		this->hp--;
+	}
 }
