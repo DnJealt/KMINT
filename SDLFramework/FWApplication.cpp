@@ -302,17 +302,21 @@ void FWApplication::DrawGraph(Graph graph) {
 
 	// Draw Lines
 	for (Edge* e : graph.edges) {
-		if (e->getWeight() == 1) {
+		if (e->getLength() == 1) {
 			// Blue
-			SetColor(Color(255, 255, 100, 255));
+			SetColor(Color(0, 0, 255, 255));
 		}
 			// Green
-		else if (e->getWeight() == 2) {
+		else if (e->getLength() == 2) {
 			SetColor(Color(0, 255, 0, 255));
 		}
-		else if (e->getWeight() == 3) {
+		else if (e->getLength() == 3) {
 			// Red
 			SetColor(Color(255, 0, 0, 255));
+		}
+		else {
+			// Yellow-ish
+			SetColor(Color(255, 255, 100, 255));
 		}
 		DrawLine(e->from->getX(), e->from->getY(), e->to->getX(), e->to->getY());
 	}
