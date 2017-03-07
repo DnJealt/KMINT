@@ -3,15 +3,17 @@
 
 class Edge {
 private:
-	const int weight;
+	float length;
+
+	const float calculateLength(Vertex* from, Vertex* to);
 
 public:
 
 	Vertex* from;
 	Vertex* to;
 
-	const int getWeight() const;
+	const float getLength() const;
 
-	Edge(Vertex* from, Vertex* to, const int weight);
+	Edge(Vertex* from, Vertex* to);
 	~Edge();
 };
