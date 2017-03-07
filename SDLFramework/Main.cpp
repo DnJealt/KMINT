@@ -25,14 +25,11 @@ int main(int args[])
 		LOG("Couldn't create window...");
 		return EXIT_FAILURE;
 	}
-	
+
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
 
 	auto background = application->LoadTexture("background.png");
-	auto pacman = new Pacman(r.pacmanStart);
-	application->AddRenderable(pacman);
-
 	std::vector<Ghost>* ghosts;
 	for (unsigned i = 0; i < 100; ++i) {
 		Ghost* temp;
@@ -50,6 +47,8 @@ int main(int args[])
 		}
 		application->AddRenderable(temp);
 	}
+	auto pacman = new Pacman(r.pacmanStart);
+	application->AddRenderable(pacman);
 
 	//// Dancing cow
 	//ExampleGameObject *example = new ExampleGameObject();
@@ -86,6 +85,7 @@ int main(int args[])
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();
+		application->DrawText(std::to_string(pacman->hp), 290, 285);
 		application->EndTick();
 	}
 		

@@ -1,5 +1,6 @@
 #pragma once
 #include "FWApplication.h"
+#include "Pocketknife.h"
 #include <SDL_rect.h>
 
 
@@ -22,6 +23,32 @@ public:
 			mApplication->DrawTexture(mTexture, mX, mY);
 		else
 			mApplication->DrawTexture(mTexture, mX, mY, mWidth, mHeight);
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>	Moves the object towards the given location. </summary>
+	///
+	/// <remarks>	Rick, 7-3-2017. </remarks>
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	virtual void Move()
+	{
+		if (this->DistanceTo(this->node->getX(), this->node->getY()) < speed * 2) {
+			std::vector<Edge*> edges = this->node->getEdges();
+			auto selection = pk.GetRandomNumber(0, edges.size());
+			this->node = edges[selection]->getOther(this->node);
+		}
+		else {
+			if (this->mX < this->node->getX())
+				this->mX += speed;
+			if (this->mX > this->node->getX())
+				this->mX -= speed;
+
+			if (this->mY > this->node->getY())
+				this->mY -= speed;
+			if (this->mY < this->node->getY())
+				this->mY += speed;
+		}
+		this->SetOffset(mX, mY);
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -163,6 +190,18 @@ public:
 		return sqrt(pow((float)x - mX, 2) + pow((float)y - mY, 2));
 	}
 
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>	Gets the active state of this object </summary>
+	///
+	/// <remarks>	Rick, 7-3-2017. </remarks>
+	///
+	/// <returns>	The active state boolean. </returns>
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	virtual float IsActive()
+	{
+		return mIsActive;
+	}
+
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Get the rect of this object. </summary>
@@ -205,13 +244,14 @@ public:
 	virtual void SetActive(bool isActive) { mIsActive = isActive;  };
 
 protected:
+	Pocketknife pk;
 	FWApplication * mApplication;
 	SDL_Texture * mTexture;
 	Vertex* node;
 	uint32_t mX, mY;
 	uint32_t mWidth, mHeight;
 	bool mIsActive;
-
+	int speed;
 private:
 
 	SDL_Rect Intersection(const SDL_Rect& boundsA, const SDL_Rect& boundsB)
