@@ -26,6 +26,7 @@ public:
 	int getY() const;
 
 	void addEdge(Edge* edge);
+	const std::vector<Edge*> getEdges() const;
 
 	void setPrevious(Vertex* v);
 	Vertex* getPrevious() const;

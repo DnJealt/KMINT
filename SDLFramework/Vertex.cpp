@@ -24,6 +24,10 @@ void Vertex::addEdge(Edge* edge)
 	this->edges.emplace_back(edge);
 }
 
+const std::vector<Edge*> Vertex::getEdges() const {
+	return this->edges;
+}
+
 Vertex* Vertex::getPrevious() const
 {
 	return this->previous;
