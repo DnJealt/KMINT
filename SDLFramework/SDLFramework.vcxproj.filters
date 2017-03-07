@@ -3,7 +3,6 @@
   <ItemGroup>
     <ClCompile Include="FWApplication.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="ExampleGameObject.cpp" />
     <ClCompile Include="Vertex.cpp">
       <Filter>Models</Filter>
     </ClCompile>
@@ -13,11 +12,16 @@
     <ClCompile Include="Graph.cpp">
       <Filter>Models</Filter>
     </ClCompile>
+    <ClCompile Include="Ghost.cpp">
+      <Filter>Models\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Pacman.cpp">
+      <Filter>Models\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h" />
     <ClInclude Include="FWApplication.h" />
-    <ClInclude Include="ExampleGameObject.h" />
     <ClInclude Include="IGameObject.h" />
     <ClInclude Include="Vertex.h">
       <Filter>Models</Filter>
@@ -31,6 +35,12 @@
     <ClInclude Include="Rift.h">
       <Filter>Models</Filter>
     </ClInclude>
+    <ClInclude Include="Ghost.h">
+      <Filter>Models\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Pacman.h">
+      <Filter>Models\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -38,6 +48,9 @@
   <ItemGroup>
     <Filter Include="Models">
       <UniqueIdentifier>{c1819ce2-6cfc-4fe4-9953-1fd27b288f2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\Objects">
+      <UniqueIdentifier>{42222c12-f9a6-4fda-96c3-b0f7820531d2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

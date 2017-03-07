@@ -2,10 +2,10 @@
 
 #include "IGameObject.h"
 
-class ExampleGameObject : public IGameObject {
+class Pacman : public IGameObject {
 public:
-	ExampleGameObject();
-	~ExampleGameObject();
+	Pacman();
+	~Pacman();
 	void Update(float deltaTime);
 
 private:

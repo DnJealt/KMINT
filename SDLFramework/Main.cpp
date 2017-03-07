@@ -5,7 +5,8 @@
 #include "SDL_timer.h"
 #include <time.h>
 
-#include "ExampleGameObject.h"
+#include "Ghost.h"
+#include "Pacman.h"
 #include "Rift.h"
 
 
