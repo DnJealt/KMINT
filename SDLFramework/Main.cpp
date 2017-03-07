@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "Ghost.h"
+#include "DeadGhost.h"
 #include "Pacman.h"
 #include "Rift.h"
 
@@ -18,7 +19,6 @@ int main(int args[])
 
 	Rift r;
 
-	//auto window = Window::CreateSDLWindow();
 	auto application = new FWApplication(50,50,1200,600);
 	if (!application->GetWindow())
 	{
@@ -30,7 +30,7 @@ int main(int args[])
 	application->SetColor(Color(255, 10, 40, 255));
 
 	auto background = application->LoadTexture("background.png");
-	std::vector<Ghost>* ghosts;
+	std::vector<Ghost*>* ghosts = new std::vector<Ghost*>;
 	for (unsigned i = 0; i < 100; ++i) {
 		Ghost* temp;
 		if (i < 25) {
@@ -45,16 +45,19 @@ int main(int args[])
 		else {
 			temp = new Ghost(r.ghostStart4);
 		}
+		ghosts->push_back(temp);
 		application->AddRenderable(temp);
 	}
-	auto pacman = new Pacman(r.pacmanStart);
+	std::vector<DeadGhost*>* deadghosts = new std::vector<DeadGhost*>;
+	for (unsigned i = 0; i < 100; ++i) {
+		DeadGhost* temp;
+		temp = new DeadGhost();
+		deadghosts->push_back(temp);
+		application->AddRenderable(temp);
+	}
+	auto pacman = new Pacman(r.pacmanStart, deadghosts);
 	application->AddRenderable(pacman);
 
-	//// Dancing cow
-	//ExampleGameObject *example = new ExampleGameObject();
-	//application->AddRenderable(example);
-
-	//while (true){}
 	while (application->IsRunning())
 	{
 		application->StartTick();

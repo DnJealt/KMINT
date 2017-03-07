@@ -21,6 +21,9 @@
     <ClCompile Include="Pocketknife.cpp">
       <Filter>Models</Filter>
     </ClCompile>
+    <ClCompile Include="DeadGhost.cpp">
+      <Filter>Models\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h" />
@@ -46,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="Pocketknife.h">
       <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="DeadGhost.h">
+      <Filter>Models\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

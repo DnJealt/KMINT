@@ -6,7 +6,7 @@ Ghost::Ghost(Vertex* start) {
 	this->SetTexture(texture);
 	this->SetSize(30, 30);
 	this->node = start;
-	this->speed = 2;
+	this->speed = 5;
 	this->mX = node->getX();
 	this->mY = node->getY();
 }
