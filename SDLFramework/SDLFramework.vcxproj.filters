@@ -18,6 +18,9 @@
     <ClCompile Include="Pacman.cpp">
       <Filter>Models\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Pocketknife.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h" />
@@ -40,6 +43,9 @@
     </ClInclude>
     <ClInclude Include="Pacman.h">
       <Filter>Models\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Pocketknife.h">
+      <Filter>Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

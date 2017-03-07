@@ -15,6 +15,7 @@ int main(int args[])
 {
 	// Seed the RNG
 	srand(time(NULL));
+
 	Rift r;
 
 	//auto window = Window::CreateSDLWindow();
@@ -31,6 +32,7 @@ int main(int args[])
 	auto background = application->LoadTexture("background.png");
 	auto pacman = new Pacman(r.pacmanStart);
 	application->AddRenderable(pacman);
+
 	std::vector<Ghost>* ghosts;
 	for (unsigned i = 0; i < 100; ++i) {
 		Ghost* temp;
