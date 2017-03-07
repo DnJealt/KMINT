@@ -14,6 +14,5 @@ Pacman::~Pacman() {
 }
 
 void Pacman::Update(float deltaTime) {
-	//this->Translate(this->node->getX(), this->node->getY());
 	this->SetOffset(this->node->getX(), this->node->getY());
 }

@@ -4,6 +4,7 @@
 #include <SDL_events.h>
 #include "SDL_timer.h"
 #include <time.h>
+#include <vector>
 
 #include "Ghost.h"
 #include "Pacman.h"
@@ -30,7 +31,23 @@ int main(int args[])
 	auto background = application->LoadTexture("background.png");
 	auto pacman = new Pacman(r.pacmanStart);
 	application->AddRenderable(pacman);
-	auto ghosts = new Ghost[100];
+	std::vector<Ghost>* ghosts;
+	for (unsigned i = 0; i < 100; ++i) {
+		Ghost* temp;
+		if (i < 25) {
+			temp = new Ghost(r.ghostStart1);
+		}
+		else if (i < 50) {
+			temp = new Ghost(r.ghostStart2);
+		}
+		else if (i < 75) {
+			temp = new Ghost(r.ghostStart3);
+		}
+		else {
+			temp = new Ghost(r.ghostStart4);
+		}
+		application->AddRenderable(temp);
+	}
 
 	//// Dancing cow
 	//ExampleGameObject *example = new ExampleGameObject();
