@@ -1,5 +1,6 @@
 #include "Pacman.h"
 #include <SDL_render.h>
+#include "AStar.h"
 
 Pacman::Pacman(Vertex* node, std::vector<DeadGhost*>* deadghosts) {
 	texture = mApplication->LoadTexture("pacman.png");

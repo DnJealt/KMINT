@@ -90,6 +90,7 @@ int main(int args[])
 		application->RenderGameObjects();
 		application->DrawText(std::to_string(pacman->hp), 290, 285);
 		application->EndTick();
+		
 	}
 		
 	return EXIT_SUCCESS;

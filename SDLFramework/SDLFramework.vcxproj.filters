@@ -23,6 +23,8 @@
     </ClCompile>
     <ClCompile Include="DeadGhost.cpp">
       <Filter>Models\Objects</Filter>
+    <ClCompile Include="AStar.cpp">
+      <Filter>Models\Algorithm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -50,8 +52,13 @@
     <ClInclude Include="Pocketknife.h">
       <Filter>Models</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="DeadGhost.h">
       <Filter>Models\Objects</Filter>
+=======
+    <ClInclude Include="AStar.h">
+      <Filter>Models\Algorithm</Filter>
+>>>>>>> 1139879b1c8bbe9847dbcc31fbf2675c32bff21e
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +70,9 @@
     </Filter>
     <Filter Include="Models\Objects">
       <UniqueIdentifier>{42222c12-f9a6-4fda-96c3-b0f7820531d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\Algorithm">
+      <UniqueIdentifier>{6217319d-6dfc-4c19-ad81-97908014263d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

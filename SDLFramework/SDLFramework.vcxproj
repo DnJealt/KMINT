@@ -85,6 +85,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DeadGhost.cpp" />
+    <ClCompile Include="AStar.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="FWApplication.cpp" />
     <ClCompile Include="Ghost.cpp" />
@@ -98,6 +99,7 @@
     <None Include="SDL2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AStar.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="DeadGhost.h" />
     <ClInclude Include="Edge.h" />
