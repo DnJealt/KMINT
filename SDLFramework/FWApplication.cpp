@@ -309,6 +309,18 @@ void FWApplication::DrawGraph(Graph graph) {
 
 	// Draw Lines
 	for (Edge* e : graph.edges) {
+		if (e->getWeight() == 1) {
+			// Blue
+			SetColor(Color(0, 0, 255, 255));
+		}
+			// Green
+		else if (e->getWeight() == 2) {
+			SetColor(Color(0, 255, 0, 255));
+		}
+		else if (e->getWeight() == 3) {
+			// Red
+			SetColor(Color(255, 0, 0, 255));
+		}
 		DrawLine(e->from->getX(), e->from->getY(), e->to->getX(), e->to->getX());
 	}
 }
