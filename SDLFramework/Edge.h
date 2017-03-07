@@ -13,6 +13,7 @@ public:
 	Vertex* to;
 
 	const float getLength() const;
+	Vertex* getOther(Vertex* v) const;
 
 	Edge(Vertex* from, Vertex* to);
 	~Edge();

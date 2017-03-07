@@ -13,6 +13,19 @@ const float Edge::calculateLength(Vertex* from, Vertex* to) {
 	return sqrt(pow((float)(from->getX() - to->getX()), 2) + pow((float)from->getY() - to->getY(), 2));
 }
 
+Vertex* Edge::getOther(Vertex* v) const
+{
+	if (from == v) {
+		return to;
+	}
+	else if(from != v){
+		return from;
+	}
+
+	// Return null if this Edge is not connected to Vertex v
+	return nullptr;
+}
+
 
 Edge::~Edge() {
 	delete from, to;
