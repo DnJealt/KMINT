@@ -1,10 +1,12 @@
 #include "Pacman.h"
 #include <SDL_render.h>
 
-Pacman::Pacman() {
+Pacman::Pacman(Vertex* node) {
 	texture = mApplication->LoadTexture("pacman.png");
 	this->SetTexture(texture);
-	this->SetSize(50, 50);
+	this->SetSize(30, 30);
+	this->hp = 100;
+	this->node = node;
 }
 
 Pacman::~Pacman() {
@@ -12,6 +14,5 @@ Pacman::~Pacman() {
 }
 
 void Pacman::Update(float deltaTime) {
-	const int x = (int)(sin(mApplication->GetTimeSinceStartedMS() / 300.0) * 15.0 + 400);
-	SetOffset(x, 250);
+	this->SetOffset(this->node->getX(), this->node->getY());
 }

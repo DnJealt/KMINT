@@ -4,7 +4,7 @@
 
 class Ghost : public IGameObject {
 public:
-	Ghost();
+	Ghost(Vertex* start);
 	~Ghost();
 	void Update(float deltaTime);
 

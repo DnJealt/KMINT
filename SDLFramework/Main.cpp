@@ -4,6 +4,7 @@
 #include <SDL_events.h>
 #include "SDL_timer.h"
 #include <time.h>
+#include <vector>
 
 #include "Ghost.h"
 #include "Pacman.h"
@@ -28,6 +29,25 @@ int main(int args[])
 	application->SetColor(Color(255, 10, 40, 255));
 
 	auto background = application->LoadTexture("background.png");
+	auto pacman = new Pacman(r.pacmanStart);
+	application->AddRenderable(pacman);
+	std::vector<Ghost>* ghosts;
+	for (unsigned i = 0; i < 100; ++i) {
+		Ghost* temp;
+		if (i < 25) {
+			temp = new Ghost(r.ghostStart1);
+		}
+		else if (i < 50) {
+			temp = new Ghost(r.ghostStart2);
+		}
+		else if (i < 75) {
+			temp = new Ghost(r.ghostStart3);
+		}
+		else {
+			temp = new Ghost(r.ghostStart4);
+		}
+		application->AddRenderable(temp);
+	}
 
 	//// Dancing cow
 	//ExampleGameObject *example = new ExampleGameObject();
@@ -53,29 +73,14 @@ int main(int args[])
 					break;
 				}
 			}
-		}
-		
-		// For the background
+		}		
+
+		// DRAW FUNCTIONS
 
 		application->SetColor(Color(255, 255, 255, 255));
 		application->DrawTexture(background, 0, 0);
 
 		application->DrawGraph(r.getGraph());
-
-		//// Text drawing
-		//application->SetColor(Color(0, 0, 0, 255));
-		//application->DrawText("Welcome to KMint", 400, 300);
-		//
-		//// Graph drawing
-		//application->SetColor(Color(0, 0, 0, 255));
-		//application->DrawLine(400, 350, 350, 400);
-		//application->DrawLine(350, 400, 450, 400);
-		//application->DrawLine(450, 400, 400, 350);
-
-		//application->SetColor(Color(0, 0, 255, 255));
-		//application->DrawCircle(400, 350, 10, true);
-		//application->DrawCircle(350, 400, 10, true);
-		//application->DrawCircle(450, 400, 10, true);
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();
