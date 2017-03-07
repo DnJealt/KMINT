@@ -87,6 +87,7 @@ int main(int args[])
 		application->UpdateGameObjects();
 		application->RenderGameObjects();
 		application->EndTick();
+		
 	}
 		
 	return EXIT_SUCCESS;
