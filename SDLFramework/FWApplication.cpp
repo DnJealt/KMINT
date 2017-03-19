@@ -295,8 +295,8 @@ void FWApplication::Quit()
 {
 	mIsRunning = false;
 }
-
-void FWApplication::DrawGraph(Graph graph) {
+                               // Do not specify default arguments in the definition
+void FWApplication::DrawGraph(Graph graph, const bool numbers) {
 	// Black
 	SetColor(Color(0, 0, 0, 255));
 
@@ -316,9 +316,17 @@ void FWApplication::DrawGraph(Graph graph) {
 
 	SetColor(Color(255, 255, 255, 255));
 
-	// Draw dots
-	for (Vertex* v : graph.vertices) {
-		DrawCircle(v->getX(), v->getY(), 4, true);
+	// Draw dots/numbers
+	if (numbers) {
+		for (Vertex* v : graph.vertices) {
+			std::string text = std::to_string(v->getNumber());
+			DrawText(text, v->getX(), v->getY());
+		}
+	}
+	else {
+		for (Vertex* v : graph.vertices) {
+			DrawCircle(v->getX(), v->getY(), 4, true);
+		}
 	}
 }
 

@@ -19,6 +19,14 @@ int Vertex::getY() const {
 	return this->yPos;
 }
 
+const int Vertex::getNumber() const {
+	return this->number;
+}
+
+void Vertex::setNumber(const int number) {
+	this->number = number;
+}
+
 void Vertex::addEdge(Edge* edge)
 {
 	this->edges.emplace_back(edge);
@@ -63,4 +71,18 @@ void Vertex::reset()
 	setCost(2147483647);
 	setPrevious(nullptr);
 	setPriority(0);
+}
+
+void Vertex::addConnection(Vertex* vertex) {
+	this->connections.emplace_back(vertex);
+}
+
+const std::vector<Vertex*> Vertex::getConnections() const {
+	return connections;
+}
+
+const int Vertex::getDistance(Vertex* to) {
+		float diffX = xPos - to->getX();
+		float diffY = yPos - to->getY();
+		return sqrt((diffY * diffY) + (diffX * diffX));	
 }
