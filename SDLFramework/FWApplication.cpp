@@ -296,7 +296,7 @@ void FWApplication::Quit()
 	mIsRunning = false;
 }
                                // Do not specify default arguments in the definition
-void FWApplication::DrawGraph(Graph graph, const bool numbers) {
+void FWApplication::DrawGraph(Graph graph, const bool debug) {
 	// Black
 	SetColor(Color(0, 0, 0, 255));
 
@@ -317,7 +317,7 @@ void FWApplication::DrawGraph(Graph graph, const bool numbers) {
 	SetColor(Color(255, 255, 255, 255));
 
 	// Draw dots/numbers
-	if (numbers) {
+	if (debug) {
 		for (Vertex* v : graph.vertices) {
 			std::string text = std::to_string(v->getNumber());
 			DrawText(text, v->getX(), v->getY());

@@ -80,13 +80,15 @@ int main(int args[])
 			}
 		}		
 
-		// DRAW FUNCTIONS
-		AStar::find(pacman, pacman->getNode()->getEdges()[0]->getOther(pacman->getNode()), &r.getGraph());
+		auto kaas = AStar::find(r.getGraph().vertices[0], r.getGraph().vertices[56], &r.getGraph());
 
+		
+
+		// DRAW FUNCTIONS
 		application->SetColor(Color(255, 255, 255, 255));
 		application->DrawTexture(background, 0, 0);
 
-		application->DrawGraph(r.getGraph(), true);
+		application->DrawGraph(r.getGraph());
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();

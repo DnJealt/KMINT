@@ -3,10 +3,13 @@
 Vertex::Vertex() {
 	this->xPos = 0;
 	this->yPos = 0;
+	reset();
 }
 
 Vertex::Vertex(int xPos, int yPos) :
-	xPos{ xPos }, yPos{ yPos } {}
+	xPos{ xPos }, yPos{ yPos } {
+	reset();
+}
 
 Vertex::~Vertex() {
 	edges.clear();

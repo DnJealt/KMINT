@@ -14,11 +14,9 @@ const void Graph::addVertex(Vertex* vertex) {
 }
 
 const void Graph::addVertexConnections() {
-	std::vector<Vertex*> temp;
-
 	for (auto v : this->vertices) {
 		for (auto e : v->getEdges()) {
-			temp.emplace_back(e->getOther(v));
+			v->addConnection(e->getOther(v));
 		}
 	}
 }
