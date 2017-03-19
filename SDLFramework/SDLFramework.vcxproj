@@ -84,6 +84,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DeadGhost.cpp" />
     <ClCompile Include="AStar.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="FWApplication.cpp" />
@@ -100,6 +101,7 @@
   <ItemGroup>
     <ClInclude Include="AStar.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="DeadGhost.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="FWApplication.h" />
     <ClInclude Include="Ghost.h" />

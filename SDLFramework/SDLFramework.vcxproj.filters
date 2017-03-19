@@ -21,6 +21,8 @@
     <ClCompile Include="Pocketknife.cpp">
       <Filter>Models</Filter>
     </ClCompile>
+    <ClCompile Include="DeadGhost.cpp">
+      <Filter>Models\Objects</Filter>
     <ClCompile Include="AStar.cpp">
       <Filter>Models\Algorithm</Filter>
     </ClCompile>
@@ -50,6 +52,8 @@
     <ClInclude Include="Pocketknife.h">
       <Filter>Models</Filter>
     </ClInclude>
+    <ClInclude Include="DeadGhost.h">
+      <Filter>Models\Objects</Filter>
     <ClInclude Include="AStar.h">
       <Filter>Models\Algorithm</Filter>
     </ClInclude>
