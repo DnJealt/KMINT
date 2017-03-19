@@ -7,6 +7,8 @@ class Edge;
 
 class Vertex {
 private:
+	int number;
+
 	int xPos;
 	int yPos;
 
@@ -14,6 +16,8 @@ private:
 	int cost;
 
 	std::vector<Edge*> edges;
+	std::vector<Vertex*> connections;
+
 	Vertex* previous{ nullptr };
 
 public:
@@ -25,8 +29,16 @@ public:
 	int getX() const;
 	int getY() const;
 
+	const int getNumber() const;
+	void setNumber(const int number);
+
 	void addEdge(Edge* edge);
 	const std::vector<Edge*> getEdges() const;
+
+	void addConnection(Vertex* vertex);
+	const std::vector<Vertex*> getConnections() const;
+
+	const int getDistance(Vertex* to);
 
 	void setPrevious(Vertex* v);
 	Vertex* getPrevious() const;

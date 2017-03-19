@@ -1,6 +1,5 @@
 #include "Pacman.h"
 #include <SDL_render.h>
-#include "AStar.h"
 
 Pacman::Pacman(Vertex* node) {
 	texture = mApplication->LoadTexture("pacman.png");
@@ -17,7 +16,7 @@ Pacman::~Pacman() {
 	SDL_DestroyTexture(texture);
 }
 
-void Pacman::Update(float deltaTime) {
+void Pacman::Update(float deltaTime) {	
 	this->Move();
 }
 

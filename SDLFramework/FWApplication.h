@@ -245,7 +245,7 @@ public:
 	void RenderGameObjects();
 	void Quit();
 
-	void DrawGraph(Graph graph);
+	void DrawGraph(Graph graph, const bool numbers = false);
 
 	//void AddOnEvent(std::function<void(SDL_Event*)> func);
 

@@ -4,6 +4,8 @@
 #include "Vertex.h"
 
 class Graph {
+private:
+	int vertexCount = 0;
 public:
 	Graph();
 	~Graph();
@@ -13,4 +15,6 @@ public:
 
 	const void addEdge(Edge* edge);
 	const void addVertex(Vertex* vertex);
+
+	const void addVertexConnections();
 };

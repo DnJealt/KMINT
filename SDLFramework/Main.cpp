@@ -9,6 +9,7 @@
 #include "Ghost.h"
 #include "Pacman.h"
 #include "Rift.h"
+#include "AStar.h"
 
 
 int main(int args[])
@@ -77,11 +78,12 @@ int main(int args[])
 		}		
 
 		// DRAW FUNCTIONS
+		AStar::find(pacman, pacman->getNode()->getEdges()[0]->getOther(pacman->getNode()), &r.getGraph());
 
 		application->SetColor(Color(255, 255, 255, 255));
 		application->DrawTexture(background, 0, 0);
 
-		application->DrawGraph(r.getGraph());
+		application->DrawGraph(r.getGraph(), true);
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();

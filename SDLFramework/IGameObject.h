@@ -243,6 +243,10 @@ public:
 
 	virtual void SetActive(bool isActive) { mIsActive = isActive;  };
 
+	Vertex* getNode() const {
+		return this->node;
+	}
+
 protected:
 	Pocketknife pk;
 	FWApplication * mApplication;
