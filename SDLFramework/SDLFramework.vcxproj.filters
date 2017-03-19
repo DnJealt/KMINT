@@ -23,6 +23,7 @@
     </ClCompile>
     <ClCompile Include="DeadGhost.cpp">
       <Filter>Models\Objects</Filter>
+	</ClCompile>
     <ClCompile Include="AStar.cpp">
       <Filter>Models\Algorithm</Filter>
     </ClCompile>
@@ -54,6 +55,7 @@
     </ClInclude>
     <ClInclude Include="DeadGhost.h">
       <Filter>Models\Objects</Filter>
+	</ClInclude>
     <ClInclude Include="AStar.h">
       <Filter>Models\Algorithm</Filter>
     </ClInclude>
