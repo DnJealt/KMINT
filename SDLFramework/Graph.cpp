@@ -20,3 +20,9 @@ const void Graph::addVertexConnections() {
 		}
 	}
 }
+
+const void Graph::resetGraph() {
+	for (auto v : vertices) {
+		v->reset();
+	}
+}

@@ -13,6 +13,8 @@
 #include "AStar.h"
 
 
+const bool debug = true;
+
 int main(int args[])
 {
 	// Seed the RNG
@@ -32,20 +34,28 @@ int main(int args[])
 
 	auto background = application->LoadTexture("background.png");
 	std::vector<Ghost*>* ghosts = new std::vector<Ghost*>;
-	for (unsigned i = 0; i < 100; ++i) {
-		Ghost* temp;
-		if (i < 25) {
-			temp = new Ghost(r.ghostStart1);
-		}
-		else if (i < 50) {
-			temp = new Ghost(r.ghostStart2);
-		}
-		else if (i < 75) {
-			temp = new Ghost(r.ghostStart3);
-		}
-		else {
-			temp = new Ghost(r.ghostStart4);
-		}
+	if (!debug) {
+		for (unsigned i = 0; i < 100; ++i) {
+			Ghost* temp;
+			if (i < 25) {
+				temp = new Ghost(r.ghostStart1);
+			}
+			else if (i < 50) {
+				temp = new Ghost(r.ghostStart2);
+			}
+			else if (i < 75) {
+				temp = new Ghost(r.ghostStart3);
+			}
+			else {
+				temp = new Ghost(r.ghostStart4);
+			}
+			ghosts->push_back(temp);
+			application->AddRenderable(temp);
+		}	
+	}
+	else {
+		Ghost* temp = new Ghost(r.ghostStart2);
+
 		ghosts->push_back(temp);
 		application->AddRenderable(temp);
 	}
@@ -78,17 +88,13 @@ int main(int args[])
 					break;
 				}
 			}
-		}		
-
-		auto kaas = AStar::find(r.getGraph().vertices[0], r.getGraph().vertices[56], &r.getGraph());
-
-		
+		}	
 
 		// DRAW FUNCTIONS
 		application->SetColor(Color(255, 255, 255, 255));
 		application->DrawTexture(background, 0, 0);
 
-		application->DrawGraph(r.getGraph());
+		application->DrawGraph(r.getGraph(), debug);
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();

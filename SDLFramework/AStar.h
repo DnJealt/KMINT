@@ -20,6 +20,7 @@ public:
 		std::vector<Vertex*> open_list;
 		std::vector<Vertex*> closed_list;
 
+		// The 'Manhattan' heuristic uses Pythagoras to estimate the distance between the two points
 		int heuristic = sqrt(pow((float)(from->getX() - dest->getX()), 2) + pow((float)from->getY() - dest->getY(), 2)) * 100;
 
 		from->setCost(0);
@@ -39,15 +40,16 @@ public:
 			for (Vertex* neighbour : current->getConnections()) {
 				int distanceToNeighbour = 0;
 
-				// Kraa kraa to get the length
+				// Find the length of the Edge from current to neighbour.
 				for (auto e : current->getEdges()) {
 					if (e->getOther(current) == neighbour) {
 						distanceToNeighbour = e->getLength();
 					}
 				}
 
-				float newCost = (current->getCost() + distanceToNeighbour + heuristic);
+				float newCost = current->getCost() + distanceToNeighbour + heuristic;
 
+				// Check if we've found a cheaper cost, then update it
 				if (newCost < neighbour->getCost()) {
 					neighbour->setPrevious(current);
 					neighbour->setCost(newCost);
@@ -75,6 +77,9 @@ public:
 			path.emplace(path.begin(), current);
 			current = current->getPrevious();
 		}
+		
+		// Reset the costs of the Vertices back to max
+		graph->resetGraph();
 
 		return path;
 	}
