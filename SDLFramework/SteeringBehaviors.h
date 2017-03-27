@@ -11,9 +11,9 @@ class SteeringBehaviors
 private:
 	Game* game;
 	DeadGhost* deadghost;
-	const float alignmentWeight = 1.5;
-	const float cohesionWeight = 1.5;
-	const float separationWeight = 5;
+	const float alignmentWeight = 500;
+	const float cohesionWeight = 150;
+	const float separationWeight = 1000;
 
 public:
 	SteeringBehaviors(Game* game, DeadGhost* deadghost);

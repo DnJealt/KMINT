@@ -23,6 +23,15 @@ DeadGhost::~DeadGhost() {
 
 void DeadGhost::Update(float deltaTime) {
 	this->velocity.add(this->behavior->calculate());
+	if (this->velocity.deltaX > 5) this->velocity.deltaX = 5;
+	if (this->velocity.deltaY > 5) this->velocity.deltaY = 5;
+	if (this->velocity.deltaX < -5) this->velocity.deltaX = -5;
+	if (this->velocity.deltaY < -5) this->velocity.deltaY = -5;
+
+	float angle = atan2(this->velocity.deltaY, this->velocity.deltaX);
+	angle = angle * 180 / 3.14159265359;
+	this->mAngle = angle;
+
 	this->mX += this->velocity.deltaX;
 	this->mY += this->velocity.deltaY;
 
