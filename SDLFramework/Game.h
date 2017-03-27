@@ -16,19 +16,18 @@
 
 class Game {
 public:
-	Game(FWApplication* application);
+	Game(FWApplication* application, bool debug = false);
 	~Game();
 	std::vector<Ghost*> ghosts;
 	std::vector<DeadGhost*> deadghosts;
 	void addDeadGhost(int i);
 	const Pacman* getPacman() const;
 	
-	Graph* getMap();
+	Graph getMap();
 
 private:
 	Rift r;
 	Pocketknife pk;
 	Pacman* pacman;
-	const bool debugmode = true;
 	FWApplication* application;
 };

@@ -17,7 +17,9 @@ Ghost::~Ghost() {
 
 void Ghost::Update(float deltaTime) {
 	totalTime += deltaTime;
-	this->state->Move(totalTime);
+	if (IsActive()) {
+		this->state->Move(totalTime);
+	}
 }
 
 void Ghost::swapState(const int state) {

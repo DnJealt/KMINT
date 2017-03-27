@@ -7,6 +7,9 @@
 #include <vector>
 #include "Game.h"
 
+
+const bool debug = false;
+
 int main(int args[])
 {
 	// Seed the RNG
@@ -19,7 +22,7 @@ int main(int args[])
 		return EXIT_FAILURE;
 	}
 
-	Game* game = new Game(application);
+	Game* game = new Game(application, debug);
 	
 		
 	return EXIT_SUCCESS;

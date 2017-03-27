@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game(FWApplication* application) {
+Game::Game(FWApplication* application, bool debug) {
 	this->application = application;
 	this->application->SetTargetFPS(60);
 	this->application->SetColor(Color(255, 10, 40, 255));
@@ -10,7 +10,7 @@ Game::Game(FWApplication* application) {
 	this->pacman = new Pacman(r.pacmanStart, this);
 	this->application->AddRenderable(pacman);
 
-	if (!debugmode) {
+	if (!debug) {
 		for (unsigned i = 0; i < 100; ++i) {
 			Ghost* temp;
 			if (i < 25) {
@@ -81,7 +81,7 @@ Game::Game(FWApplication* application) {
 		this->application->SetColor(Color(255, 255, 255, 255));
 		this->application->DrawTexture(background, 0, 0);
 
-		this->application->DrawGraph(r.getGraph(), debugmode);
+		this->application->DrawGraph(r.getGraph(), debug);
 
 		this->application->UpdateGameObjects();
 		this->application->RenderGameObjects();
@@ -102,6 +102,6 @@ const Pacman* Game::getPacman() const {
 	return this->pacman;
 }
 
-Graph* Game::getMap() {
-	return &r.getGraph();
+Graph Game::getMap() {
+	return r.getGraph();
 }
