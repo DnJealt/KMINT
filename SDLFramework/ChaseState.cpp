@@ -4,4 +4,5 @@
 ChaseState::ChaseState(Ghost* ghost) : GhostState(ghost) {}
 ChaseState::~ChaseState() {}
 
-void ChaseState::Move(int totalTime){}
+void ChaseState::Move(int totalTime)
+{}
