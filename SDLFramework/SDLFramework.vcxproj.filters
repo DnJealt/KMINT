@@ -23,9 +23,15 @@
     </ClCompile>
     <ClCompile Include="DeadGhost.cpp">
       <Filter>Models\Objects</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="AStar.cpp">
       <Filter>Models\Algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="SteeringBehaviors.cpp">
+      <Filter>Models\Algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="Heaven.cpp">
+      <Filter>Models</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -55,8 +61,17 @@
     </ClInclude>
     <ClInclude Include="DeadGhost.h">
       <Filter>Models\Objects</Filter>
-	</ClInclude>
+    </ClInclude>
     <ClInclude Include="AStar.h">
+      <Filter>Models\Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="SteeringBehaviors.h">
+      <Filter>Models\Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="Heaven.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Steering.h">
       <Filter>Models\Algorithm</Filter>
     </ClInclude>
   </ItemGroup>

@@ -90,6 +90,9 @@ int main(int args[])
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();
+
+		application->SetColor(Color(0, 0, 0, 255));
+		application->DrawRect(575, 0, 25, 600, true);
 		application->DrawText(std::to_string(pacman->hp), 290, 285);
 		application->EndTick();
 		

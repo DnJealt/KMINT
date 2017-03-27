@@ -255,7 +255,7 @@ protected:
 	uint32_t mX, mY;
 	uint32_t mWidth, mHeight;
 	bool mIsActive;
-	int speed;
+	float speed;
 private:
 
 	SDL_Rect Intersection(const SDL_Rect& boundsA, const SDL_Rect& boundsB)
