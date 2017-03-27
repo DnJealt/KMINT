@@ -1,18 +1,20 @@
 #include "DeadGhost.h"
 #include <SDL_render.h>
 #include "Steering.h"
+#include "Game.h"
 
-DeadGhost::DeadGhost() {
+DeadGhost::DeadGhost(Game* game) {
+	Pocketknife pk;
 	texture = mApplication->LoadTexture("ghost_angel.png");
+	this->game = game;
 	this->SetTexture(texture);
 	this->SetSize(60, 60);
 	this->speed = 5;
 	this->maxSpeed = 10;
-	this->mX = 900;
-	this->mY = 300;
-	this->mIsActive = false;
-	this->angle = 0;
-	this->behavior = new SteeringBehaviors();
+	this->mX = pk.GetRandomNumber(650, 1150);
+	this->mY = pk.GetRandomNumber(50, 550);
+	//this->mIsActive = false;
+	this->behavior = new SteeringBehaviors(game, this);
 }
 
 DeadGhost::~DeadGhost() {
@@ -20,23 +22,18 @@ DeadGhost::~DeadGhost() {
 }
 
 void DeadGhost::Update(float deltaTime) {
-	Steering steering = this->behavior->calculate(this->mX, this->mY);
-
-	this->angle += steering.deltaAngle;
-	this->speed += steering.deltaSpeed;
+	this->velocity.add(this->behavior->calculate());
+	this->mX += this->velocity.deltaX;
+	this->mY += this->velocity.deltaY;
 
 	// Validation
 	if (this->mX < 600) this->mX = 1200;
 	if (this->mX > 1200) this->mX = 600;
 	if (this->mY < 10) this->mY = 590;
 	if (this->mY > 590) this->mY = 10;
-	if (this->angle > 359) this->angle = 0;
-	if (this->angle < 0) this->angle = 359;
+
 	if (this->speed < 1) speed = 1;
 	if (this->speed > this->maxSpeed) speed = this->maxSpeed;
-
-	this->mX += speed * sin(angle);
-	this->mY += speed * cos(angle);
 	
 	this->SetOffset(this->mX, this->mY);
 }
