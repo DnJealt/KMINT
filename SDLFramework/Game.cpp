@@ -10,7 +10,7 @@ Game::Game(FWApplication* application) {
 	this->pacman = new Pacman(r.pacmanStart, this);
 	this->application->AddRenderable(pacman);
 
-	if (!debug) {
+	if (!debugmode) {
 		for (unsigned i = 0; i < 100; ++i) {
 			Ghost* temp;
 			if (i < 25) {
@@ -81,7 +81,7 @@ Game::Game(FWApplication* application) {
 		this->application->SetColor(Color(255, 255, 255, 255));
 		this->application->DrawTexture(background, 0, 0);
 
-		this->application->DrawGraph(r.getGraph(), debug);
+		this->application->DrawGraph(r.getGraph(), debugmode);
 
 		this->application->UpdateGameObjects();
 		this->application->RenderGameObjects();

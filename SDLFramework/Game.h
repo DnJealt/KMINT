@@ -29,6 +29,6 @@ private:
 	Rift r;
 	Pocketknife pk;
 	Pacman* pacman;
-	const bool debug = false;
+	const bool debugmode = true;
 	FWApplication* application;
 };
