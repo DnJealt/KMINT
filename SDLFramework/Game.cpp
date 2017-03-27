@@ -49,7 +49,7 @@ Game::Game(FWApplication* application) {
 		}
 	}
 
-	for (unsigned i = 0; i < 10; ++i) {
+	for (unsigned i = 0; i < 100; ++i) {
 		DeadGhost* temp;
 		temp = new DeadGhost(this);
 		deadghosts.push_back(temp);

@@ -11,7 +11,6 @@ public:
 	DeadGhost(Game* game);
 	~DeadGhost();
 	void Update(float deltaTime);
-	float maxSpeed;
 	Steering velocity;
 private:
 	SDL_Texture *texture;

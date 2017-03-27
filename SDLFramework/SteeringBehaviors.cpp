@@ -20,8 +20,6 @@ Steering SteeringBehaviors::calculate() {
 	Steering cohesion = calculateCohesion();
 	Steering separation = calculateSeparation();
 
-	std::cout << alignment.deltaX << " " << cohesion.deltaX << " " << separation.deltaX << std::endl;
-
 	steering.deltaX = alignment.deltaX + cohesion.deltaX + separation.deltaX;
 	steering.deltaY = alignment.deltaY + cohesion.deltaY + separation.deltaY;
 	return steering;
@@ -33,15 +31,17 @@ Steering SteeringBehaviors::calculateAlignment() {
 
 	for (unsigned i = 0; i < this->game->deadghosts.size(); ++i)
 	{
-		if (this->game->deadghosts.at(i) != this->deadghost)
-		{
-			if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 100)
+		if (this->game->deadghosts.at(i)->IsActive() && this->deadghost->IsActive()) {
+			if (this->game->deadghosts.at(i) != this->deadghost)
 			{
-				steering.deltaX += this->game->deadghosts.at(i)->velocity.deltaX;
-				steering.deltaY += this->game->deadghosts.at(i)->velocity.deltaY;
-				neighborCount++;
-			}
+				if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 100)
+				{
+					steering.deltaX += this->game->deadghosts.at(i)->velocity.deltaX;
+					steering.deltaY += this->game->deadghosts.at(i)->velocity.deltaY;
+					neighborCount++;
+				}
 
+			}
 		}
 	}
 	if (neighborCount == 0) {
@@ -59,15 +59,17 @@ Steering SteeringBehaviors::calculateCohesion() {
 
 	for (unsigned i = 0; i < this->game->deadghosts.size(); ++i)
 	{
-		if (this->game->deadghosts.at(i) != this->deadghost)
-		{
-			if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 200)
+		if (this->game->deadghosts.at(i)->IsActive() && this->deadghost->IsActive()) {
+			if (this->game->deadghosts.at(i) != this->deadghost)
 			{
-				steering.deltaX += (this->game->deadghosts.at(i)->mX - this->deadghost->mX);
-				steering.deltaY += (this->game->deadghosts.at(i)->mY - this->deadghost->mY);
-				neighborCount++;
-			}
+				if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 200)
+				{
+					steering.deltaX += (this->game->deadghosts.at(i)->mX - this->deadghost->mX);
+					steering.deltaY += (this->game->deadghosts.at(i)->mY - this->deadghost->mY);
+					neighborCount++;
+				}
 
+			}
 		}
 	}
 	if (neighborCount == 0) {
@@ -85,15 +87,17 @@ Steering SteeringBehaviors::calculateSeparation() {
 
 	for (unsigned i = 0; i < this->game->deadghosts.size(); ++i)
 	{
-		if (this->game->deadghosts.at(i) != this->deadghost)
-		{
-			if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 50)
+		if (this->game->deadghosts.at(i)->IsActive() && this->deadghost->IsActive()) {
+			if (this->game->deadghosts.at(i) != this->deadghost)
 			{
-				steering.deltaX += (this->game->deadghosts.at(i)->mX - this->deadghost->mX);
-				steering.deltaY += (this->game->deadghosts.at(i)->mY - this->deadghost->mY);
-				neighborCount++;
-			}
+				if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 50)
+				{
+					steering.deltaX += (this->game->deadghosts.at(i)->mX - this->deadghost->mX);
+					steering.deltaY += (this->game->deadghosts.at(i)->mY - this->deadghost->mY);
+					neighborCount++;
+				}
 
+			}
 		}
 	}
 	if (neighborCount == 0) {

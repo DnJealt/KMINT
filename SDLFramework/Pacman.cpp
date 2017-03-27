@@ -5,7 +5,7 @@
 Pacman::Pacman(Vertex* node, Game* game) {
 	this->SetTexture(mApplication->LoadTexture("pacman.png"));
 	this->SetSize(30, 30);
-	this->hp = 10;
+	this->hp = 100;
 	this->node = node;
 	this->speed = 11;
 	this->mX = node->getX();
