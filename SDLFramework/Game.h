@@ -21,6 +21,10 @@ public:
 	std::vector<Ghost*> ghosts;
 	std::vector<DeadGhost*> deadghosts;
 	void addDeadGhost(int i);
+	const Pacman* getPacman() const;
+	
+	Graph* getMap();
+
 private:
 	Rift r;
 	Pocketknife pk;
