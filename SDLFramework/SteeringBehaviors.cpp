@@ -34,7 +34,7 @@ Steering SteeringBehaviors::calculateAlignment() {
 		if (this->game->deadghosts.at(i)->IsActive() && this->deadghost->IsActive()) {
 			if (this->game->deadghosts.at(i) != this->deadghost)
 			{
-				if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 100)
+				if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 150)
 				{
 					steering.deltaX += this->game->deadghosts.at(i)->velocity.deltaX;
 					steering.deltaY += this->game->deadghosts.at(i)->velocity.deltaY;
@@ -90,7 +90,7 @@ Steering SteeringBehaviors::calculateSeparation() {
 		if (this->game->deadghosts.at(i)->IsActive() && this->deadghost->IsActive()) {
 			if (this->game->deadghosts.at(i) != this->deadghost)
 			{
-				if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 50)
+				if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 45)
 				{
 					steering.deltaX += (this->game->deadghosts.at(i)->mX - this->deadghost->mX);
 					steering.deltaY += (this->game->deadghosts.at(i)->mY - this->deadghost->mY);
