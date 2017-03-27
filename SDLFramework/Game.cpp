@@ -14,16 +14,16 @@ Game::Game(FWApplication* application) {
 		for (unsigned i = 0; i < 100; ++i) {
 			Ghost* temp;
 			if (i < 25) {
-				temp = new Ghost(r.ghostStart1);
+				temp = new Ghost(r.ghostStart1, this);
 			}
 			else if (i < 50) {
-				temp = new Ghost(r.ghostStart2);
+				temp = new Ghost(r.ghostStart2, this);
 			}
 			else if (i < 75) {
-				temp = new Ghost(r.ghostStart3);
+				temp = new Ghost(r.ghostStart3, this);
 			}
 			else {
-				temp = new Ghost(r.ghostStart4);
+				temp = new Ghost(r.ghostStart4, this);
 			}
 			ghosts.push_back(temp);
 			this->application->AddRenderable(temp);
@@ -33,16 +33,16 @@ Game::Game(FWApplication* application) {
 		for (unsigned i = 0; i < 4; ++i) {
 			Ghost* temp;
 			if (i == 0) {
-				temp = new Ghost(r.ghostStart1);
+				temp = new Ghost(r.ghostStart1, this);
 			}
 			else if (i == 1) {
-				temp = new Ghost(r.ghostStart2);
+				temp = new Ghost(r.ghostStart2, this);
 			}
 			else if (i == 2) {
-				temp = new Ghost(r.ghostStart3);
+				temp = new Ghost(r.ghostStart3, this);
 			}
 			else {
-				temp = new Ghost(r.ghostStart4);
+				temp = new Ghost(r.ghostStart4, this);
 			}
 			ghosts.push_back(temp);
 			this->application->AddRenderable(temp);
@@ -96,4 +96,12 @@ Game::Game(FWApplication* application) {
 
 void Game::addDeadGhost(int i) {
 	deadghosts.at(i)->SetActive(true);
+}
+
+const Pacman* Game::getPacman() const {
+	return this->pacman;
+}
+
+Graph* Game::getMap() {
+	return &r.getGraph();
 }

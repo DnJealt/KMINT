@@ -1,7 +1,7 @@
 #include "Ghost.h"
 #include <SDL_render.h>
 
-Ghost::Ghost(Vertex* start) {	
+Ghost::Ghost(Vertex* start, Game* game) : game { game } {
 	this->SetTexture(mApplication->LoadTexture("ghost_idle.png"));
 	this->SetSize(30, 30);
 	this->node = start;
@@ -48,4 +48,8 @@ void Ghost::updateState(GhostState* state) {
 
 const int Ghost::getWanderingTime() const {
 	return this->wanderingTime;
+}
+
+Game* Ghost::getGame() const {
+	return this->game;
 }

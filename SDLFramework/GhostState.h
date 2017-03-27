@@ -2,7 +2,6 @@
 
 class Ghost;
 
-
 class GhostState {
 private:
 
