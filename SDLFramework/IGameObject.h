@@ -9,7 +9,7 @@ class IGameObject
 public:
 	IGameObject() : mIsActive(true) { mApplication = FWApplication::GetInstance(); }
 	float mX, mY;
-
+	int mAngle = 0;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Abstract draw method </summary>
@@ -21,10 +21,15 @@ public:
 		if (!mIsActive)
 			return;
 
-		if (mWidth == 0 || mHeight == 0)
-			mApplication->DrawTexture(mTexture, mX, mY);
-		else
-			mApplication->DrawTexture(mTexture, mX, mY, mWidth, mHeight);
+		if (mAngle != 0) {
+			mApplication->DrawTexture(mTexture, mX, mY, mWidth, mHeight, mAngle);
+		}
+		else {
+			if (mWidth == 0 || mHeight == 0)
+				mApplication->DrawTexture(mTexture, mX, mY);
+			else
+				mApplication->DrawTexture(mTexture, mX, mY, mWidth, mHeight);
+		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////

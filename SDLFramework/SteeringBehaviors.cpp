@@ -17,17 +17,13 @@ Steering SteeringBehaviors::calculate() {
 	Steering steering;
 	
 	Steering alignment = calculateAlignment();
-	alignment.normalize(alignmentWeight);
 	Steering cohesion = calculateCohesion();
-	cohesion.normalize(cohesionWeight);
 	Steering separation = calculateSeparation();
-	separation.normalize(separationWeight);
 
 	std::cout << alignment.deltaX << " " << cohesion.deltaX << " " << separation.deltaX << std::endl;
 
-	steering.deltaX = cohesion.deltaX;
-	steering.deltaY = cohesion.deltaY;
-
+	steering.deltaX = alignment.deltaX + cohesion.deltaX + separation.deltaX;
+	steering.deltaY = alignment.deltaY + cohesion.deltaY + separation.deltaY;
 	return steering;
 }
 
@@ -39,7 +35,7 @@ Steering SteeringBehaviors::calculateAlignment() {
 	{
 		if (this->game->deadghosts.at(i) != this->deadghost)
 		{
-			if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 300)
+			if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 100)
 			{
 				steering.deltaX += this->game->deadghosts.at(i)->velocity.deltaX;
 				steering.deltaY += this->game->deadghosts.at(i)->velocity.deltaY;
@@ -51,9 +47,9 @@ Steering SteeringBehaviors::calculateAlignment() {
 	if (neighborCount == 0) {
 		return steering;
 	}
-	steering.deltaX /= neighborCount;
-	steering.deltaY /= neighborCount;
-	//steering.normalize(1);
+	steering.normalize(alignmentWeight);
+	steering.normalize(neighborCount);
+	
 	return steering;
 }
 
@@ -67,8 +63,8 @@ Steering SteeringBehaviors::calculateCohesion() {
 		{
 			if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 200)
 			{
-				steering.deltaX += this->game->deadghosts.at(i)->mX;
-				steering.deltaY += this->game->deadghosts.at(i)->mY;
+				steering.deltaX += (this->game->deadghosts.at(i)->mX - this->deadghost->mX);
+				steering.deltaY += (this->game->deadghosts.at(i)->mY - this->deadghost->mY);
 				neighborCount++;
 			}
 
@@ -77,13 +73,10 @@ Steering SteeringBehaviors::calculateCohesion() {
 	if (neighborCount == 0) {
 		return steering;
 	}
-	steering.deltaX /= neighborCount;
-	steering.deltaY /= neighborCount;
-	//steering->normalize(1);
-	Steering velocity;
-	velocity.deltaX = steering.deltaX - deadghost->mX;
-	velocity.deltaY = steering.deltaY - deadghost->mY;
-	return velocity;
+	steering.normalize(cohesionWeight);
+	steering.normalize(neighborCount);
+	
+	return steering;
 }
 
 Steering SteeringBehaviors::calculateSeparation() {
@@ -94,7 +87,7 @@ Steering SteeringBehaviors::calculateSeparation() {
 	{
 		if (this->game->deadghosts.at(i) != this->deadghost)
 		{
-			if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 100)
+			if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 50)
 			{
 				steering.deltaX += (this->game->deadghosts.at(i)->mX - this->deadghost->mX);
 				steering.deltaY += (this->game->deadghosts.at(i)->mY - this->deadghost->mY);
@@ -106,8 +99,10 @@ Steering SteeringBehaviors::calculateSeparation() {
 	if (neighborCount == 0) {
 		return steering;
 	}
+	// multiply by -1 to reverse the direction.
 	steering.multiply(-1);
+	steering.normalize(separationWeight);
 	steering.normalize(neighborCount);
-	steering.normalize(50);
+	
 	return steering;
 }
