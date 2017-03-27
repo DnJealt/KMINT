@@ -12,5 +12,5 @@ public:
 	std::vector<DeadGhost*>* deadghosts;
 	int hp;
 private:
-	SDL_Texture *texture;
+	//SDL_Texture *texture;
 };

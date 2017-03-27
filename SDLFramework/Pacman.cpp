@@ -1,9 +1,8 @@
 #include "Pacman.h"
 #include <SDL_render.h>
 
-Pacman::Pacman(Vertex* node, std::vector<DeadGhost*>* deadghosts) {
-	texture = mApplication->LoadTexture("pacman.png");
-	this->SetTexture(texture);
+Pacman::Pacman(Vertex* node, std::vector<DeadGhost*>* deadghosts) {	
+	this->SetTexture(mApplication->LoadTexture("pacman.png"));
 	this->SetSize(30, 30);
 	this->hp = 100;
 	this->node = node;
@@ -14,7 +13,7 @@ Pacman::Pacman(Vertex* node, std::vector<DeadGhost*>* deadghosts) {
 }
 
 Pacman::~Pacman() {
-	SDL_DestroyTexture(texture);
+	SDL_DestroyTexture(mTexture);
 }
 
 void Pacman::Update(float deltaTime) {	

@@ -246,6 +246,30 @@ public:
 	Vertex* getNode() const {
 		return this->node;
 	}
+	
+	void setNode(Vertex* node) {
+		this->node = node;
+	}
+
+	float getSpeed() const {
+		return this->speed;
+	}
+
+	uint32_t getX() const {
+		return this->mX;
+	}
+
+	void setX(uint32_t x) {
+		this->mX = x;
+	}
+
+	uint32_t getY() const {
+		return this->mY;
+	}
+
+	void setY(uint32_t y) {
+		this->mY = y;
+	}
 
 protected:
 	Pocketknife pk;
