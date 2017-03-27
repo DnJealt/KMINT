@@ -11,7 +11,10 @@
 #include "Pacman.h"
 #include "Rift.h"
 #include "AStar.h"
+#include "Pocketknife.h"
 
+
+const bool debug = true;
 
 int main(int args[])
 {
@@ -19,6 +22,7 @@ int main(int args[])
 	srand(time(NULL));
 
 	Rift r;
+	Pocketknife pk;
 
 	auto application = new FWApplication(50,50,1200,600);
 	if (!application->GetWindow())
@@ -32,22 +36,43 @@ int main(int args[])
 
 	auto background = application->LoadTexture("background.png");
 	std::vector<Ghost*>* ghosts = new std::vector<Ghost*>;
-	for (unsigned i = 0; i < 100; ++i) {
-		Ghost* temp;
-		if (i < 25) {
-			temp = new Ghost(r.ghostStart1);
+	if (!debug) {
+		for (unsigned i = 0; i < 100; ++i) {
+			Ghost* temp;
+			if (i < 25) {
+				temp = new Ghost(r.ghostStart1);
+			}
+			else if (i < 50) {
+				temp = new Ghost(r.ghostStart2);
+			}
+			else if (i < 75) {
+				temp = new Ghost(r.ghostStart3);
+			}
+			else {
+				temp = new Ghost(r.ghostStart4);
+			}
+			ghosts->push_back(temp);
+			application->AddRenderable(temp);
+		}	
+	}
+	else {
+		for (unsigned i = 0; i < 4; ++i) {
+			Ghost* temp;
+			if (i == 0) {
+				temp = new Ghost(r.ghostStart1);
+			}
+			else if (i == 1) {
+				temp = new Ghost(r.ghostStart2);
+			}
+			else if (i == 2) {
+				temp = new Ghost(r.ghostStart3);
+			}
+			else {
+				temp = new Ghost(r.ghostStart4);
+			}
+			ghosts->push_back(temp);
+			application->AddRenderable(temp);
 		}
-		else if (i < 50) {
-			temp = new Ghost(r.ghostStart2);
-		}
-		else if (i < 75) {
-			temp = new Ghost(r.ghostStart3);
-		}
-		else {
-			temp = new Ghost(r.ghostStart4);
-		}
-		ghosts->push_back(temp);
-		application->AddRenderable(temp);
 	}
 	std::vector<DeadGhost*>* deadghosts = new std::vector<DeadGhost*>;
 	for (unsigned i = 0; i < 100; ++i) {
@@ -78,15 +103,13 @@ int main(int args[])
 					break;
 				}
 			}
-		}		
+		}	
 
 		// DRAW FUNCTIONS
-		AStar::find(pacman, pacman->getNode()->getEdges()[0]->getOther(pacman->getNode()), &r.getGraph());
-
 		application->SetColor(Color(255, 255, 255, 255));
 		application->DrawTexture(background, 0, 0);
 
-		application->DrawGraph(r.getGraph(), true);
+		application->DrawGraph(r.getGraph(), debug);
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();

@@ -239,5 +239,7 @@ public:
 		graph.addEdge(new Edge(pillSpawn4, vertex149));
 		graph.addEdge(new Edge(vertex136, pillSpawn3));
 		graph.addEdge(new Edge(pillSpawn3, vertex137));
+
+		graph.addVertexConnections();
 	}
 };

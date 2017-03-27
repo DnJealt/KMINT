@@ -16,5 +16,7 @@ public:
 	const void addEdge(Edge* edge);
 	const void addVertex(Vertex* vertex);
 
+	const void resetGraph();
+
 	const void addVertexConnections();
 };

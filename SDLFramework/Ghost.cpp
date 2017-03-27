@@ -16,5 +16,26 @@ Ghost::~Ghost() {
 }
 
 void Ghost::Update(float deltaTime) {
-	this->Move();
+	totalTime += deltaTime;
+	this->Move();	
+	checkState();	
+}
+
+void Ghost::swapState(const int state) {
+	if (state == 0) {
+		this->SetTexture(mApplication->LoadTexture("ghost_chase_pacman.png"));
+	}
+	else if (state == 1) {
+		this->SetTexture(mApplication->LoadTexture("ghost_idle.png"));
+	}
+	else if (state == 2) {		
+		this->SetTexture(mApplication->LoadTexture("ghost_chase_powerpill.png"));
+	}
+}
+
+void Ghost::checkState() {
+	if (totalTime > wanderingTime) {
+		totalTime = 0;
+		swapState(pk.GetRandomNumber(0, 3));
+	}
 }
