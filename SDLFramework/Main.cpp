@@ -11,6 +11,7 @@
 #include "Pacman.h"
 #include "Rift.h"
 #include "AStar.h"
+#include "Pocketknife.h"
 
 
 const bool debug = true;
@@ -21,6 +22,7 @@ int main(int args[])
 	srand(time(NULL));
 
 	Rift r;
+	Pocketknife pk;
 
 	auto application = new FWApplication(50,50,1200,600);
 	if (!application->GetWindow())
@@ -54,10 +56,23 @@ int main(int args[])
 		}	
 	}
 	else {
-		Ghost* temp = new Ghost(r.ghostStart2);
-
-		ghosts->push_back(temp);
-		application->AddRenderable(temp);
+		for (unsigned i = 0; i < 4; ++i) {
+			Ghost* temp;
+			if (i == 0) {
+				temp = new Ghost(r.ghostStart1);
+			}
+			else if (i == 1) {
+				temp = new Ghost(r.ghostStart2);
+			}
+			else if (i == 2) {
+				temp = new Ghost(r.ghostStart3);
+			}
+			else {
+				temp = new Ghost(r.ghostStart4);
+			}
+			ghosts->push_back(temp);
+			application->AddRenderable(temp);
+		}
 	}
 	std::vector<DeadGhost*>* deadghosts = new std::vector<DeadGhost*>;
 	for (unsigned i = 0; i < 100; ++i) {

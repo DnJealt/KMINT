@@ -295,7 +295,7 @@ void FWApplication::Quit()
 {
 	mIsRunning = false;
 }
-                               // Do not specify default arguments in the definition
+                               // Do not specify default arguments in the definition, only in declaration
 void FWApplication::DrawGraph(Graph graph, const bool debug) {
 	// Black
 	SetColor(Color(0, 0, 0, 255));
