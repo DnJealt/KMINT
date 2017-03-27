@@ -33,6 +33,7 @@
     <ClCompile Include="Heaven.cpp">
       <Filter>Models</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GhostState.cpp">
       <Filter>Models\Objects\States</Filter>
     </ClCompile>
@@ -86,6 +87,7 @@
     <ClInclude Include="Steering.h">
       <Filter>Models\Algorithm</Filter>
     </ClInclude>
+    <ClInclude Include="Game.h" />
     <ClInclude Include="IdleState.h">
       <Filter>Models\Objects\States</Filter>
     </ClInclude>

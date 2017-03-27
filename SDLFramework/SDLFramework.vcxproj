@@ -89,6 +89,7 @@
     <ClCompile Include="AStar.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="FWApplication.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Ghost.cpp" />
     <ClCompile Include="GhostState.cpp" />
     <ClCompile Include="Graph.cpp" />
@@ -111,6 +112,7 @@
     <ClInclude Include="DeadGhost.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="FWApplication.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Ghost.h" />
     <ClInclude Include="GhostState.h" />
     <ClInclude Include="Graph.h" />

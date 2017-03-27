@@ -1,15 +1,16 @@
 #include "Pacman.h"
+#include "Game.h"
 #include <SDL_render.h>
 
-Pacman::Pacman(Vertex* node, std::vector<DeadGhost*>* deadghosts) {	
+Pacman::Pacman(Vertex* node, Game* game) {
 	this->SetTexture(mApplication->LoadTexture("pacman.png"));
 	this->SetSize(30, 30);
-	this->hp = 100;
+	this->hp = 10;
 	this->node = node;
 	this->speed = 11;
 	this->mX = node->getX();
 	this->mY = node->getY();
-	this->deadghosts = deadghosts;
+	this->game = game;
 }
 
 Pacman::~Pacman() {
@@ -25,6 +26,6 @@ void Pacman::OnCollision(IGameObject* collidedObject) {
 		collidedObject->SetActive(false);
 		this->hp--;
 		this->speed = (this->hp / 10)+1;
-		this->deadghosts->at(this->hp)->SetActive(true);
+		this->game->addDeadGhost(this->hp);
 	}
 }

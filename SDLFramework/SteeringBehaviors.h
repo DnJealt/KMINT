@@ -2,32 +2,27 @@
 #include "Steering.h"
 #include <vector>
 
+class Game;
 class DeadGhost;
 
 class SteeringBehaviors
 {
 
 private:
-	enum State 
-	{ 
-		Wandering = 1,
-		Following,
-		Arriving,
-		Fleeing 
-	};
-
-	State currentState;
+	Game* game;
+	DeadGhost* deadghost;
+	const float alignmentWeight = 1.5;
+	const float cohesionWeight = 1.5;
+	const float separationWeight = 5;
 
 public:
-	SteeringBehaviors();
+	SteeringBehaviors(Game* game, DeadGhost* deadghost);
 	~SteeringBehaviors();
 
-	Steering calculate(int x, int y);
-	Steering calcWandering(int x, int y);
-	Steering calcFollowing(int x, int y);
-	Steering calcArriving(int x, int y);
-	Steering calcFleeing(int x, int y);
-
+	Steering calculate();
+	Steering calculateAlignment();
+	Steering calculateCohesion();
+	Steering calculateSeparation();
 
 
 

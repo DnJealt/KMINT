@@ -1,15 +1,16 @@
 #pragma once
-#include "DeadGhost.h"
 #include "IGameObject.h"
+
+class Game;
 
 class Pacman : public IGameObject {
 public:
-	Pacman(Vertex* node, std::vector<DeadGhost*>* deadghosts);
+	Pacman(Vertex* node, Game* game);
 	~Pacman();
 	void Update(float deltaTime);
 
 	void OnCollision(IGameObject * collidedObject);
-	std::vector<DeadGhost*>* deadghosts;
+	Game* game;
 	int hp;
 private:
 	//SDL_Texture *texture;
