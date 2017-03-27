@@ -17,16 +17,16 @@ Steering SteeringBehaviors::calculate() {
 	Steering steering;
 	
 	Steering alignment = calculateAlignment();
-	alignment.multiply(alignmentWeight);
+	alignment.normalize(alignmentWeight);
 	Steering cohesion = calculateCohesion();
-	cohesion.multiply(cohesionWeight);
+	cohesion.normalize(cohesionWeight);
 	Steering separation = calculateSeparation();
 	separation.normalize(separationWeight);
 
 	std::cout << alignment.deltaX << " " << cohesion.deltaX << " " << separation.deltaX << std::endl;
 
-	steering.deltaX = separation.deltaX;
-	steering.deltaY = separation.deltaY;
+	steering.deltaX = cohesion.deltaX;
+	steering.deltaY = cohesion.deltaY;
 
 	return steering;
 }

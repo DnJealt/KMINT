@@ -84,16 +84,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ChaseState.cpp" />
     <ClCompile Include="DeadGhost.cpp" />
     <ClCompile Include="AStar.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="FWApplication.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Ghost.cpp" />
+    <ClCompile Include="GhostState.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Heaven.cpp" />
+    <ClCompile Include="IdleState.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Pacman.cpp" />
+    <ClCompile Include="PillState.cpp" />
     <ClCompile Include="Pocketknife.cpp" />
     <ClCompile Include="SteeringBehaviors.cpp" />
     <ClCompile Include="Vertex.cpp" />
@@ -103,21 +107,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AStar.h" />
+    <ClInclude Include="ChaseState.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="DeadGhost.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="FWApplication.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Ghost.h" />
+    <ClInclude Include="GhostState.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Heaven.h" />
     <ClInclude Include="IGameObject.h" />
     <ClInclude Include="Pacman.h" />
+    <ClInclude Include="PillState.h" />
     <ClInclude Include="Pocketknife.h" />
     <ClInclude Include="Steering.h" />
     <ClInclude Include="Rift.h" />
     <ClInclude Include="SteeringBehaviors.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="IdleState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

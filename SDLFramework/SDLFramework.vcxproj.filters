@@ -34,6 +34,18 @@
       <Filter>Models</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GhostState.cpp">
+      <Filter>Models\Objects\States</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleState.cpp">
+      <Filter>Models\Objects\States</Filter>
+    </ClCompile>
+    <ClCompile Include="ChaseState.cpp">
+      <Filter>Models\Objects\States</Filter>
+    </ClCompile>
+    <ClCompile Include="PillState.cpp">
+      <Filter>Models\Objects\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h" />
@@ -76,6 +88,18 @@
       <Filter>Models\Algorithm</Filter>
     </ClInclude>
     <ClInclude Include="Game.h" />
+    <ClInclude Include="IdleState.h">
+      <Filter>Models\Objects\States</Filter>
+    </ClInclude>
+    <ClInclude Include="PillState.h">
+      <Filter>Models\Objects\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ChaseState.h">
+      <Filter>Models\Objects\States</Filter>
+    </ClInclude>
+    <ClInclude Include="GhostState.h">
+      <Filter>Models\Objects\States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -89,6 +113,9 @@
     </Filter>
     <Filter Include="Models\Algorithm">
       <UniqueIdentifier>{6217319d-6dfc-4c19-ad81-97908014263d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\Objects\States">
+      <UniqueIdentifier>{fc07b9a7-e2f6-4c7d-9a62-8f3baf949b18}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

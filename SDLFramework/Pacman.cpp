@@ -3,8 +3,7 @@
 #include <SDL_render.h>
 
 Pacman::Pacman(Vertex* node, Game* game) {
-	texture = mApplication->LoadTexture("pacman.png");
-	this->SetTexture(texture);
+	this->SetTexture(mApplication->LoadTexture("pacman.png"));
 	this->SetSize(30, 30);
 	this->hp = 10;
 	this->node = node;
@@ -15,7 +14,7 @@ Pacman::Pacman(Vertex* node, Game* game) {
 }
 
 Pacman::~Pacman() {
-	SDL_DestroyTexture(texture);
+	SDL_DestroyTexture(mTexture);
 }
 
 void Pacman::Update(float deltaTime) {	
