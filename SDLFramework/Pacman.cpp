@@ -23,9 +23,12 @@ void Pacman::Update(float deltaTime) {
 
 void Pacman::OnCollision(IGameObject* collidedObject) {
 	if (collidedObject != nullptr && collidedObject->IsActive()) {
-		collidedObject->SetActive(false);
-		this->hp--;
-		this->speed = (this->hp / 10)+1;
-		this->game->addDeadGhost(this->hp);
+		std::string state = collidedObject->getState()->getStateName();
+		if (state == "chase") {
+			collidedObject->SetActive(false);
+			this->hp--;
+			this->speed = (this->hp / 10)+1;
+			this->game->addDeadGhost(this->hp);
+		}
 	}
 }

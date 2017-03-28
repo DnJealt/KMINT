@@ -19,12 +19,15 @@ public:
 	int speedmultiplier = pk.GetRandomNumber(1, 3);
 	const int getWanderingTime() const;
 	Game* getGame() const;
+
 	void swapState(const int state);
-	void setSpeed(int speed);
+
+	State* getState() override;
+
 private:
 	float totalTime = 0;
-	GhostState* state;
 	Game* game;
+	GhostState* state;
 
 	// Ghost may wander around for 2 to 10 seconds
 	int wanderingTime = pk.GetRandomNumber(2, 11);

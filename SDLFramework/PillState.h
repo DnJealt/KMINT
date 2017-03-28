@@ -15,4 +15,6 @@ public:
 
 	std::vector<Vertex*> shortestPath;
 	int pathCount = 0;
+private:
+	bool hasMoved = false;
 };

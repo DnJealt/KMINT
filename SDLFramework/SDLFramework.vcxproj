@@ -99,6 +99,7 @@
     <ClCompile Include="Pacman.cpp" />
     <ClCompile Include="PillState.cpp" />
     <ClCompile Include="Pocketknife.cpp" />
+    <ClCompile Include="State.cpp" />
     <ClCompile Include="SteeringBehaviors.cpp" />
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
@@ -121,6 +122,7 @@
     <ClInclude Include="Pacman.h" />
     <ClInclude Include="PillState.h" />
     <ClInclude Include="Pocketknife.h" />
+    <ClInclude Include="State.h" />
     <ClInclude Include="Steering.h" />
     <ClInclude Include="Rift.h" />
     <ClInclude Include="SteeringBehaviors.h" />

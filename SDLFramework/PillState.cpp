@@ -1,12 +1,12 @@
 #include "PillState.h"
 
-PillState::PillState(Ghost* ghost) : GhostState(ghost) {}
+PillState::PillState(Ghost* ghost) : GhostState(ghost, "pill") {}
 PillState::~PillState() {}
 
 void PillState::Move(int totalTime) {
 	
 	// If no path has been set yet, create a new path.
-	if (this->shortestPath.empty()) {
+	if (this->shortestPath.empty() && !hasMoved) {
 		Vertex* pillVertex1 = ghost->getGame()->r.pillSpawn1;
 		Vertex* pillVertex2 = ghost->getGame()->r.pillSpawn2;
 		Vertex* pillVertex3 = ghost->getGame()->r.pillSpawn3;
@@ -36,10 +36,11 @@ void PillState::Move(int totalTime) {
 			closestVertex = nullptr;
 		}
 
-		shortestPath = AStar::find(ghost->getNode(), closestVertex, &ghost->getGame()->getMap());
+		this->shortestPath = AStar::find(ghost->getNode(), closestVertex, &ghost->getGame()->getMap());
+		hasMoved = true;
 	}
 	else {
-		if (ghost->DistanceTo(ghost->getNode()->getX(), ghost->getNode()->getY()) < ghost->getSpeed() * 2) {
+		if (ghost->DistanceTo(ghost->getNode()->getX(), ghost->getNode()->getY()) < ghost->getSpeed() * 3) {
 			if (shortestPath.size() != pathCount) {
 				ghost->setNode(shortestPath.at(pathCount));
 				pathCount++;

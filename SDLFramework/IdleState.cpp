@@ -1,11 +1,11 @@
 #include "IdleState.h"
 
-IdleState::IdleState(Ghost* ghost) : GhostState(ghost) {}
+IdleState::IdleState(Ghost* ghost) : GhostState(ghost, "idle") {}
 IdleState::~IdleState() {}
 
 void IdleState::Move(int totalTime) {
-	// IdleState: Move around randomly
-
+	// IdleState: Move around randomly NOPE.. do nothing at all.
+	
 	if (ghost->DistanceTo(ghost->getNode()->getX(), ghost->getNode()->getY()) < ghost->getSpeed() * 2) {
 		std::vector<Edge*> edges = ghost->getNode()->getEdges();
 		auto selection = pk.GetRandomNumber(0, edges.size());
@@ -27,7 +27,7 @@ void IdleState::Move(int totalTime) {
 	}
 	// Move the ghost to its new position
 	ghost->SetOffset(ghost->getX(), ghost->getY());
-
+	
 	if (totalTime > ghost->getWanderingTime()) {
 		ghost->checkState();
 	}
