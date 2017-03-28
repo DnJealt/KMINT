@@ -46,8 +46,8 @@ void PillState::Move(int totalTime) {
 				pathCount++;
 			}
 			else {
-				ghost->swapState(0);
 				ghost->setSpeed(ghost->getSpeed() * ghost->speedmultiplier);
+				ghost->swapState(0);
 			}
 		}
 		else {
