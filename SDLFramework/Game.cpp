@@ -112,44 +112,64 @@ Graph Game::getMap() {
 }
 
 void Game::nextGeneration() {
-	ghosts.clear();
-	ghosts.shrink_to_fit();
-	deadghosts.clear();
-	deadghosts.shrink_to_fit();
-	this->pacman->hp = 100;
-	for (unsigned i = 0; i < 100; ++i) {
-		Ghost* temp;
-		if (i < 25) {
-			temp = new Ghost(r.ghostStart1, this);
-		}
-		else if (i < 50) {
-			temp = new Ghost(r.ghostStart2, this);
-		}
-		else if (i < 75) {
-			temp = new Ghost(r.ghostStart3, this);
-		}
-		else {
-			temp = new Ghost(r.ghostStart4, this);
-		}
-		ghosts.push_back(temp);
-		this->application->AddRenderable(temp);
+	if (averageTime == 0) {
+		std::cout << "There was no average time to begin with, so the chances are all 33.3." << std::endl;
 	}
-	for (unsigned i = 0; i < 100; ++i) {
-		DeadGhost* temp;
-		temp = new DeadGhost(this);
-		deadghosts.push_back(temp);
-		application->AddRenderable(temp);
+	float totalGhostTime = 0;
+	for (unsigned i = 0; i < ghosts.size(); ++i) {
+		totalGhostTime += ghosts.at(i)->getTotalTime();
+	}
+	this->averageTime = totalGhostTime / 100;
+
+	if (averageTime != 0) {
+		std::cout << "--- NEXT GENERATION ---" << std::endl;
+		std::cout << "--- Chase: " << this->chaseChance << " ---" << std::endl;
+		std::cout << "--- Idle: " << this->idleChance << " ---" << std::endl;
+		std::cout << "--- Pill: " << this->pillChance << " ---" << std::endl;
+		std::cout << "-----------------------" << std::endl;
+	}
+
+	this->pacman->reset();
+	
+	for (unsigned i = 0; i < ghosts.size(); ++i) {
+		ghosts.at(i)->reset();
+	}
+	for (unsigned i = 0; i < deadghosts.size(); ++i) {
+		deadghosts.at(i)->reset();
+	}
+}
+
+void Game::increaseChance(int state) {
+	// Set boundaries for given chances
+	if (idleChance > 10 && pillChance > 10) {
+		if (chaseChance < 90) {
+			if (state == 0) {
+				this->chaseChance += 0.4;
+				this->idleChance -= 0.2;
+				this->pillChance -= 0.2;
+			}
+		}
+	}
+	if (chaseChance > 10 && pillChance > 10) {
+		if (idleChance < 90) {
+			if (state == 1) {
+				this->idleChance += 0.4;
+				this->chaseChance -= 0.2;
+				this->pillChance -= 0.2;
+			}
+		}
+	}
+	if (idleChance > 10 && chaseChance > 10) {
+		if (pillChance < 90) {
+			if (state == 2) {
+				this->pillChance += 0.4;
+				this->chaseChance -= 0.2;
+				this->idleChance -= 0.2;
+			}
+		}
 	}
 }
 
 const float Game::getAverageTime() const {
 	return this->averageTime;
-}
-
-void Game::addAverage(float time) {
-	// There is a new dead ghost, increase the number
-	deadGhostCount++;
-
-	// Calculate the new average time by deviding the newly added time
-	float newAverage = (averageTime + time) / deadGhostCount;
 }

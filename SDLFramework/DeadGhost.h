@@ -12,6 +12,7 @@ public:
 	~DeadGhost();
 	void Update(float deltaTime);
 	Steering velocity;
+	void reset();
 private:
 	SDL_Texture *texture;
 	SteeringBehaviors *behavior;

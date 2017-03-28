@@ -24,16 +24,17 @@ public:
 	const Pacman* getPacman() const;
 	Rift r;
 	Graph getMap();
+	float averageTime;
 
+	void increaseChance(int state);
+
+	float idleChance = 100 / 3;
+	float chaseChance = 100 / 3;
+	float pillChance = 100 / 3;
 
 private:
 	void nextGeneration();
 	const float getAverageTime() const;
-	void addAverage(float time);
-
-private:
-	float averageTime;
-	int deadGhostCount;
 
 	Pocketknife pk;
 	Pacman* pacman;

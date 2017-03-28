@@ -8,7 +8,7 @@
 #include "Game.h"
 
 
-const bool debug = true;
+const bool debug = false;
 
 int main(int args[])
 {

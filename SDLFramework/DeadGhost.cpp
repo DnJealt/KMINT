@@ -12,6 +12,8 @@ DeadGhost::DeadGhost(Game* game) {
 	this->speed = 5;
 	this->mX = pk.GetRandomNumber(650, 1150);
 	this->mY = pk.GetRandomNumber(50, 550);
+	this->startX = this->mX;
+	this->startY = this->mY;
 	this->mIsActive = false;
 	this->behavior = new SteeringBehaviors(game, this);
 }
@@ -42,4 +44,12 @@ void DeadGhost::Update(float deltaTime) {
 	if (this->mY > 590) this->mY = 10;
 	
 	this->SetOffset(this->mX, this->mY);
+}
+
+void DeadGhost::reset() {
+	this->SetActive(false);
+	this->mX = this->startX;
+	this->mY = this->startY;
+	this->velocity.deltaX = 0;
+	this->velocity.deltaY = 0;
 }
