@@ -2,6 +2,7 @@
 
 #include "GhostState.h"
 #include "Pocketknife.h"
+#include "Ghost.h"
 
 class IdleState : public GhostState {
 private:

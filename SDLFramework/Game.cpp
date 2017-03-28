@@ -88,6 +88,7 @@ Game::Game(FWApplication* application, bool debug) {
 
 		this->application->SetColor(Color(0, 0, 0, 255));
 		this->application->DrawRect(575, 0, 25, 600, true);
+		this->application->SetColor(Color(255, 255, 255, 255));
 		this->application->DrawText(std::to_string(pacman->hp), 290, 285);
 		this->application->EndTick();
 

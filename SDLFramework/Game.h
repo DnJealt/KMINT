@@ -22,11 +22,11 @@ public:
 	std::vector<DeadGhost*> deadghosts;
 	void addDeadGhost(int i);
 	const Pacman* getPacman() const;
-	
+	Rift r;
 	Graph getMap();
 
 private:
-	Rift r;
+	
 	Pocketknife pk;
 	Pacman* pacman;
 	FWApplication* application;

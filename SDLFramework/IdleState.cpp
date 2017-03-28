@@ -1,5 +1,4 @@
 #include "IdleState.h"
-#include "Ghost.h"
 
 IdleState::IdleState(Ghost* ghost) : GhostState(ghost) {}
 IdleState::~IdleState() {}
