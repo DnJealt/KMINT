@@ -12,7 +12,7 @@ private:
 	Game* game;
 	DeadGhost* deadghost;
 	const float alignmentWeight = 200;
-	const float cohesionWeight = 500;
+	const float cohesionWeight = 400;
 	const float separationWeight = 50;
 
 public:
