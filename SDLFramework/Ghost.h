@@ -24,9 +24,13 @@ public:
 
 	State* getState() override;
 
+	void reset();
+
 private:
 	Game* game;
 	GhostState* state;
+
+	bool isFirstState;
 
 	// Ghost may wander around for 2 to 10 seconds
 	int wanderingTime = pk.GetRandomNumber(2, 11);

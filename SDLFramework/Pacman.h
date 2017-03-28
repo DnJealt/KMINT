@@ -13,6 +13,8 @@ public:
 	void OnCollision(IGameObject * collidedObject);
 	Game* game;
 	int hp;
+
+	void reset();
 private:
 	
 };

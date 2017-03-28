@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include <SDL_video.h>
 #include <SDL_render.h>
+#include <algorithm>
 #include <SDL_events.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
@@ -258,6 +259,11 @@ void FWApplication::DrawCircle(int startPosX, int startPosY, int size, bool fill
 void FWApplication::AddRenderable(IGameObject * renderable)
 {
 	mGameObjects.push_back(renderable);
+}
+
+void FWApplication::RemoveRenderable(IGameObject * renderable)
+{
+	mGameObjects.erase(std::remove(mGameObjects.begin(), mGameObjects.end(), renderable), mGameObjects.end());
 }
 
 uint32_t FWApplication::GetTimeSinceStartedMS() const

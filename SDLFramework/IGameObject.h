@@ -287,6 +287,14 @@ public:
 		return this->state;
 	}
 
+	int getFirstState() {
+		return this->mFirstState;
+	}
+
+	void setFirstState(int state) {
+		this->mFirstState = state;
+	}
+
 	float getTotalTime() {
 		return this->totalTime;
 	}
@@ -296,11 +304,14 @@ protected:
 	FWApplication * mApplication;
 	SDL_Texture * mTexture;
 	State* state;
+	int mFirstState;
 	Vertex* node;
 	uint32_t mWidth, mHeight;
 	bool mIsActive;
 	float speed;
 	float mX, mY;
+	float startX, startY;
+	Vertex* startNode;
 	float totalTime;
 
 private:

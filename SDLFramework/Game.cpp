@@ -99,6 +99,9 @@ Game::Game(FWApplication* application, bool debug) {
 		this->application->DrawRect(575, 0, 25, 600, true);
 		this->application->SetColor(Color(255, 255, 255, 255));
 		this->application->DrawText(std::to_string(pacman->hp), 290, 285);
+		if (pacman->hp <= 0) {
+			this->nextGeneration();
+		}
 		this->application->EndTick();
 
 	}
@@ -117,16 +120,65 @@ Graph Game::getMap() {
 	return r.getGraph();
 }
 
-const float Game::getAverageTime() const {
-	return this->averageTime;
+void Game::nextGeneration() {
+	if (averageTime == 0) {
+		std::cout << "There was no average time to begin with, so the chances are all 33.3." << std::endl;
+	}
+	float totalGhostTime = 0;
+	for (unsigned i = 0; i < ghosts.size(); ++i) {
+		totalGhostTime += ghosts.at(i)->getTotalTime();
+	}
+	this->averageTime = totalGhostTime / 100;
+
+	if (averageTime != 0) {
+		std::cout << "--- NEXT GENERATION ---" << std::endl;
+		std::cout << "--- Chase: " << this->chaseChance << " ---" << std::endl;
+		std::cout << "--- Idle: " << this->idleChance << " ---" << std::endl;
+		std::cout << "--- Pill: " << this->pillChance << " ---" << std::endl;
+		std::cout << "-----------------------" << std::endl;
+	}
+
+	this->pacman->reset();
+	
+	for (unsigned i = 0; i < ghosts.size(); ++i) {
+		ghosts.at(i)->reset();
+	}
+	for (unsigned i = 0; i < deadghosts.size(); ++i) {
+		deadghosts.at(i)->reset();
+	}
 }
 
-void Game::addAverage(float time) {
-	// There is a new dead ghost, increase the number
-	deadGhostCount++;
+void Game::increaseChance(int state) {
+	// Set boundaries for given chances
+	if (idleChance > 10 && pillChance > 10) {
+		if (chaseChance < 90) {
+			if (state == 0) {
+				this->chaseChance += 0.4;
+				this->idleChance -= 0.2;
+				this->pillChance -= 0.2;
+			}
+		}
+	}
+	if (chaseChance > 10 && pillChance > 10) {
+		if (idleChance < 90) {
+			if (state == 1) {
+				this->idleChance += 0.4;
+				this->chaseChance -= 0.2;
+				this->pillChance -= 0.2;
+			}
+		}
+	}
+	if (idleChance > 10 && chaseChance > 10) {
+		if (pillChance < 90) {
+			if (state == 2) {
+				this->pillChance += 0.4;
+				this->chaseChance -= 0.2;
+				this->idleChance -= 0.2;
+			}
+		}
+	}
+}
 
-	// Calculate the new average time by deviding the newly added time
-	float newAverage = (averageTime + time) / deadGhostCount;
-
-
+const float Game::getAverageTime() const {
+	return this->averageTime;
 }
