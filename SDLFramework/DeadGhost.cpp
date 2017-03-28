@@ -18,6 +18,7 @@ DeadGhost::DeadGhost(Game* game) {
 
 DeadGhost::~DeadGhost() {
 	SDL_DestroyTexture(texture);
+	mApplication->RemoveRenderable(this);
 }
 
 void DeadGhost::Update(float deltaTime) {

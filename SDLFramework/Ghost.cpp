@@ -13,6 +13,7 @@ Ghost::Ghost(Vertex* start, Game* game) : game { game } {
 
 Ghost::~Ghost() {
 	SDL_DestroyTexture(mTexture);
+	mApplication->RemoveRenderable(this);
 }
 
 void Ghost::Update(float deltaTime) {

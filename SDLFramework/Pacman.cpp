@@ -5,7 +5,7 @@
 Pacman::Pacman(Vertex* node, Game* game) {
 	this->SetTexture(mApplication->LoadTexture("pacman.png"));
 	this->SetSize(30, 30);
-	this->hp = 100;
+	this->hp = 4;
 	this->node = node;
 	this->speed = 11;
 	this->mX = node->getX();
@@ -15,6 +15,7 @@ Pacman::Pacman(Vertex* node, Game* game) {
 
 Pacman::~Pacman() {
 	SDL_DestroyTexture(mTexture);
+	mApplication->RemoveRenderable(this);
 }
 
 void Pacman::Update(float deltaTime) {	

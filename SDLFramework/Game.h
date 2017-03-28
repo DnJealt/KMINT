@@ -25,8 +25,10 @@ public:
 	Rift r;
 	Graph getMap();
 
+
+
 private:
-	
+	void nextGeneration();
 	Pocketknife pk;
 	Pacman* pacman;
 	FWApplication* application;

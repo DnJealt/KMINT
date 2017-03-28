@@ -90,6 +90,9 @@ Game::Game(FWApplication* application, bool debug) {
 		this->application->DrawRect(575, 0, 25, 600, true);
 		this->application->SetColor(Color(255, 255, 255, 255));
 		this->application->DrawText(std::to_string(pacman->hp), 290, 285);
+		if (pacman->hp <= 0) {
+			this->nextGeneration();
+		}
 		this->application->EndTick();
 
 	}
@@ -105,4 +108,35 @@ const Pacman* Game::getPacman() const {
 
 Graph Game::getMap() {
 	return r.getGraph();
+}
+
+void Game::nextGeneration() {
+	ghosts.clear();
+	ghosts.shrink_to_fit();
+	deadghosts.clear();
+	deadghosts.shrink_to_fit();
+	this->pacman->hp = 100;
+	for (unsigned i = 0; i < 100; ++i) {
+		Ghost* temp;
+		if (i < 25) {
+			temp = new Ghost(r.ghostStart1, this);
+		}
+		else if (i < 50) {
+			temp = new Ghost(r.ghostStart2, this);
+		}
+		else if (i < 75) {
+			temp = new Ghost(r.ghostStart3, this);
+		}
+		else {
+			temp = new Ghost(r.ghostStart4, this);
+		}
+		ghosts.push_back(temp);
+		this->application->AddRenderable(temp);
+	}
+	for (unsigned i = 0; i < 100; ++i) {
+		DeadGhost* temp;
+		temp = new DeadGhost(this);
+		deadghosts.push_back(temp);
+		application->AddRenderable(temp);
+	}
 }
