@@ -25,7 +25,6 @@ public:
 	State* getState() override;
 
 private:
-	float totalTime = 0;
 	Game* game;
 	GhostState* state;
 
