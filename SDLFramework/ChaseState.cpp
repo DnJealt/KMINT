@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "AStar.h"
 
-ChaseState::ChaseState(Ghost* ghost) : GhostState(ghost) {}
+ChaseState::ChaseState(Ghost* ghost) : GhostState(ghost, "chase") {}
 ChaseState::~ChaseState() {}
 
 void ChaseState::Move(int totalTime) {
@@ -12,6 +12,7 @@ void ChaseState::Move(int totalTime) {
 		if (ghost->DistanceTo(ghost->getNode()->getX(), ghost->getNode()->getY()) < ghost->getSpeed() * 2) {
 			std::vector<Vertex*> path = AStar::find(ghost->getNode(), pacmanVertex, &ghost->getGame()->getMap());
 
+			// If the path is empty, pacman moving to the ghosts' current position
 			if (!path.empty()) { ghost->setNode(path[0]); }
 		}
 		else {

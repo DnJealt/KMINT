@@ -55,3 +55,7 @@ const int Ghost::getWanderingTime() const {
 Game* Ghost::getGame() const {
 	return this->game;
 }
+
+State* Ghost::getState() {
+	return this->state;
+}

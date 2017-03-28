@@ -3,6 +3,7 @@
 #include "Pocketknife.h"
 #include <SDL_rect.h>
 
+class State;
 
 class IGameObject
 {
@@ -277,10 +278,15 @@ public:
 		this->mY = y;
 	}
 
+	virtual State* getState() {
+		return this->state;
+	}
+
 protected:
 	Pocketknife pk;
 	FWApplication * mApplication;
 	SDL_Texture * mTexture;
+	State* state;
 	Vertex* node;
 	uint32_t mWidth, mHeight;
 	bool mIsActive;
