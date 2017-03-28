@@ -262,6 +262,10 @@ public:
 		return this->speed;
 	}
 
+	void setSpeed(float speed) {
+		this->speed = speed;
+	}
+
 	float getX() const {
 		return this->mX;
 	}

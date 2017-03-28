@@ -5,7 +5,7 @@ Ghost::Ghost(Vertex* start, Game* game) : game { game } {
 	this->SetTexture(mApplication->LoadTexture("ghost_idle.png"));
 	this->SetSize(30, 30);
 	this->node = start;
-	this->speed = 5;
+	this->speed = 3;
 	this->mX = node->getX();
 	this->mY = node->getY();
 	this->state = new IdleState(this);
