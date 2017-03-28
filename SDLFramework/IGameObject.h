@@ -7,8 +7,7 @@
 class IGameObject
 {
 public:
-	IGameObject() : mIsActive(true) { mApplication = FWApplication::GetInstance(); }
-	float mX, mY;
+	IGameObject() : mIsActive(true) { mApplication = FWApplication::GetInstance(); }	
 	int mAngle = 0;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -262,19 +261,19 @@ public:
 		return this->speed;
 	}
 
-	uint32_t getX() const {
+	float getX() const {
 		return this->mX;
 	}
 
-	void setX(uint32_t x) {
+	void setX(float x) {
 		this->mX = x;
 	}
 
-	uint32_t getY() const {
+	float getY() const {
 		return this->mY;
 	}
 
-	void setY(uint32_t y) {
+	void setY(float y) {
 		this->mY = y;
 	}
 
@@ -286,6 +285,7 @@ protected:
 	uint32_t mWidth, mHeight;
 	bool mIsActive;
 	float speed;
+	float mX, mY;
 private:
 
 	SDL_Rect Intersection(const SDL_Rect& boundsA, const SDL_Rect& boundsB)

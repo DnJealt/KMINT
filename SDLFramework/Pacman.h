@@ -13,5 +13,5 @@ public:
 	Game* game;
 	int hp;
 private:
-	//SDL_Texture *texture;
+	
 };

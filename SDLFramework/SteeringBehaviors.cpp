@@ -64,8 +64,8 @@ Steering SteeringBehaviors::calculateCohesion() {
 			{
 				if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 200)
 				{
-					steering.deltaX += (this->game->deadghosts.at(i)->mX - this->deadghost->mX);
-					steering.deltaY += (this->game->deadghosts.at(i)->mY - this->deadghost->mY);
+					steering.deltaX += (this->game->deadghosts.at(i)->getX() - this->deadghost->getX());
+					steering.deltaY += (this->game->deadghosts.at(i)->getY() - this->deadghost->getY());
 					neighborCount++;
 				}
 
@@ -92,8 +92,8 @@ Steering SteeringBehaviors::calculateSeparation() {
 			{
 				if (this->deadghost->DistanceTo(this->game->deadghosts.at(i)) < 50)
 				{
-					steering.deltaX += (this->game->deadghosts.at(i)->mX - this->deadghost->mX);
-					steering.deltaY += (this->game->deadghosts.at(i)->mY - this->deadghost->mY);
+					steering.deltaX += (this->game->deadghosts.at(i)->getX() - this->deadghost->getX());
+					steering.deltaY += (this->game->deadghosts.at(i)->getY() - this->deadghost->getY());
 					neighborCount++;
 				}
 
