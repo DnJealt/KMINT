@@ -70,7 +70,16 @@ Game::Game(FWApplication* application, bool debug) {
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym) {
-
+				case SDLK_g: // Letter G
+					std::cout << "keypressed! \n";
+					this->application->EndTick();
+					for (int i = 0; i < 10; ++i) {
+						this->application->StartTick();
+						this->application->UpdateGameObjects(true);
+					}
+						/*this->application->RenderGameObjects();
+						this->application->EndTick();*/
+					break;
 				default:
 					break;
 				}
