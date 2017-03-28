@@ -45,6 +45,7 @@ void Ghost::checkState() {
 }
 
 void Ghost::updateState(GhostState* state) {
+	delete this->state;
 	this->state = state;
 }
 
