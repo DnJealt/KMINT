@@ -282,8 +282,13 @@ public:
 		this->mY = y;
 	}
 
+	// the Base State class should not be used
 	virtual State* getState() {
 		return this->state;
+	}
+
+	float getTotalTime() {
+		return this->totalTime;
 	}
 
 protected:
@@ -296,6 +301,8 @@ protected:
 	bool mIsActive;
 	float speed;
 	float mX, mY;
+	float totalTime;
+
 private:
 
 	SDL_Rect Intersection(const SDL_Rect& boundsA, const SDL_Rect& boundsB)

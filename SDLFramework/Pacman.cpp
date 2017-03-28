@@ -29,6 +29,7 @@ void Pacman::OnCollision(IGameObject* collidedObject) {
 			this->hp--;
 			this->speed = (this->hp / 10)+1;
 			this->game->addDeadGhost(this->hp);
+			
 		}
 	}
 }

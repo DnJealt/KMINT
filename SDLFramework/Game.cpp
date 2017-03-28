@@ -96,6 +96,7 @@ Game::Game(FWApplication* application, bool debug) {
 }
 
 void Game::addDeadGhost(int i) {
+	// Set the ghost at the designated hp spot of pacman active.
 	deadghosts.at(i)->SetActive(true);
 }
 
@@ -105,4 +106,18 @@ const Pacman* Game::getPacman() const {
 
 Graph Game::getMap() {
 	return r.getGraph();
+}
+
+const float Game::getAverageTime() const {
+	return this->averageTime;
+}
+
+void Game::addAverage(float time) {
+	// There is a new dead ghost, increase the number
+	deadGhostCount++;
+
+	// Calculate the new average time by deviding the newly added time
+	float newAverage = (averageTime + time) / deadGhostCount;
+
+
 }

@@ -25,8 +25,13 @@ public:
 	Rift r;
 	Graph getMap();
 
+	const float getAverageTime() const;
+	void addAverage(float time);
+
 private:
-	
+	float averageTime;
+	int deadGhostCount;
+
 	Pocketknife pk;
 	Pacman* pacman;
 	FWApplication* application;
