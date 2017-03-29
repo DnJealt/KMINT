@@ -2,7 +2,7 @@
 
 Game::Game(FWApplication* application, bool debug) {
 	this->application = application;
-	this->application->SetTargetFPS(60);
+	this->application->SetTargetFPS(120);
 	this->application->SetColor(Color(255, 10, 40, 255));
 
 	auto background = this->application->LoadTexture("background.png");
