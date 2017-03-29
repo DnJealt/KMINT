@@ -178,7 +178,7 @@ void FWApplication::EndTick()
 	}
 }
 
-void FWApplication::UpdateGameObjects()
+void FWApplication::UpdateGameObjects(bool faster)
 {
 	for (IGameObject * obj : mGameObjects)
 	{
@@ -195,7 +195,12 @@ void FWApplication::UpdateGameObjects()
 				}
 			}
 		}
-		obj->Update((float)mDeltaTimeMS / 1000.0f);
+		if (faster) {
+			obj->Update((float)mDeltaTimeMS / 100.0f);
+		}
+		else {
+			obj->Update((float)mDeltaTimeMS / 1000.0f);
+		}
 	}
 }
 
